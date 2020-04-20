@@ -1,3 +1,4 @@
+using AutoMapper;
 using Intranet.Data;
 using Intranet.Data.Repositories;
 using System;
@@ -45,6 +46,15 @@ namespace Intranet.API
             // TODO: Register your type's mappings here.
             container.RegisterType<IEtiquetaRepository, EtiquetaRepository>();
             container.RegisterType<IntranetDbContext>();
+
+
+            //AutoMapper injection
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new IntranetMappingProfile());
+            });
+
+            container.RegisterInstance<IMapper>(config.CreateMapper(), InstanceLifetime.Singleton);
         }
     }
 }

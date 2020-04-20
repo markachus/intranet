@@ -36,7 +36,9 @@ namespace Intranet.Data.Repositories
 
         public async Task<Etiqueta> GetAsync(string nombre)
         {
-            var  tag = await _context.Etiquetas.FindAsync(nombre);
+            var  tag = await _context.Etiquetas.
+                Where( t => t.Nombre.ToUpper() == nombre.ToUpper()).
+                SingleOrDefaultAsync();
             return tag;
         }
 
