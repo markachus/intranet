@@ -16,13 +16,21 @@ namespace Intranet.Data.Repositories
             this._context = context;
         }
 
+        IntranetDbContext IEtiquetaRepository.Context { get { return _context; } }
+
         public void Add(Etiqueta tag)
         {
             _context.Etiquetas.Add(tag);
         }
 
         public void Delete(Etiqueta tag)
-        {
+        {   
+            var qry = from p in _context.Entradas
+                      where p.Etiquetas.Select(e => e.Nombre.ToUpper()).Contains(tag.Nombre.ToUpper())
+                      select p;
+
+            if (qry.Count() > 0) throw new InvalidOperationException($"No se puede eliminar {tag} porque está en uso");
+
             _context.Etiquetas.Remove(tag);
         }
 

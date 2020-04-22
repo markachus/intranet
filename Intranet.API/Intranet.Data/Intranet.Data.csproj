@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\EntradaRepository.cs" />
     <Compile Include="Repositories\EtiquetaRepository.cs" />
     <Compile Include="Repositories\IEntradaRepository.cs" />
     <Compile Include="Repositories\IEtiquetaRepository.cs" />

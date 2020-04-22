@@ -6,6 +6,7 @@ namespace Intranet.Data.Repositories
 {
     public interface IEtiquetaRepository
     {
+        IntranetDbContext Context { get; }
         Task<bool> SaveChangesAsync();
 
         Task<Etiqueta[]> GetAllAsync();

@@ -45,6 +45,7 @@ namespace Intranet.API
 
             // TODO: Register your type's mappings here.
             container.RegisterType<IEtiquetaRepository, EtiquetaRepository>();
+            container.RegisterType<IEntradaRepository, EntradaRepository>();
             container.RegisterType<IntranetDbContext>();
 
 

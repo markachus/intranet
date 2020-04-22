@@ -9,17 +9,17 @@ namespace Intranet.Data.Repositories
     {
         Task<bool> SaveChangesAsync();
 
-        Task<List<Entrada>> GetAllAsync(bool incluyeEtiquetas = false);
+        IntranetDbContext Context { get; }
+
+        Task<Entrada[]> GetAllAsync(bool incluyeEtiquetas = false);
         Task<Entrada> GetAsync(Guid EntradaId);
 
         void Add(Entrada entrada);
-
-        void Update(Entrada entrada);
         
         void Delete(Entrada entrada);
 
-        void AddEtiqueta(Etiqueta tag);
-        void RemoveEtiqueta(Etiqueta tag);
+        void AddEtiqueta(Entrada entrada, Etiqueta tag);
+        void RemoveEtiqueta(Entrada entrada, Etiqueta tag);
 
     }
 }

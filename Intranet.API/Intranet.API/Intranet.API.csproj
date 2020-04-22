@@ -156,11 +156,13 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\EntradaController.cs" />
     <Compile Include="Controllers\EtiquetaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IntranetMappingProfile.cs" />
+    <Compile Include="Models\EntradaModel.cs" />
     <Compile Include="Models\EtiquetaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

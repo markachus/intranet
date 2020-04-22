@@ -14,6 +14,11 @@ namespace Intranet.API
         {
             CreateMap<Etiqueta, EtiquetaModel>()
                 .ReverseMap();
+
+            CreateMap<Entrada, EntradaModel>().
+                ReverseMap().
+                ForMember(m => m.Etiquetas, opt => opt.Ignore());
+
         }
     }
 }

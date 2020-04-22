@@ -160,5 +160,30 @@ namespace Intranet.API.Controllers
 
         }
 
+        public async Task<IHttpActionResult> Delete(string nombre)
+        {
+            try
+            {
+                var tag = await repository.GetAsync(nombre);
+                if (tag == null) return NotFound();
+                
+                try
+                {
+                    repository.Delete(tag);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    return Conflict();
+                }
+                
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError();
+            }
+
+        }
+
     }
 }
