@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Intranet.API.Attributes;
 using Intranet.API.Models;
 using Intranet.Data.Entities;
 using Intranet.Data.Repositories;
@@ -12,6 +13,7 @@ using System.Web.Http;
 
 namespace Intranet.API.Controllers
 {
+    //[RequireHttpsAttribute]
     [RoutePrefix("api/tags")]
     public class EtiquetaController : ApiController
     {

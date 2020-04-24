@@ -12,7 +12,7 @@ namespace Intranet.Data
     {
         public IntranetDbContext() : base()
         {
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<IntranetDbContext,Migrations.Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<IntranetDbContext,Migrations.Configuration>());
         }
 
         public DbSet<Entrada> Entradas { get; set; }

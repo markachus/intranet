@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intranet.App", "Intranet.App\Intranet.App\Intranet.App.csproj", "{E9273068-8735-4E3A-A932-F039D69ED2DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intranet.App.Android", "Intranet.App\Intranet.App.Android\Intranet.App.Android.csproj", "{7064AEFD-9D0E-4BD9-B460-C001FB1CE90C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +30,16 @@ Global
 		{C3DEEDE0-A6F0-434C-AFF7-1159486F4D33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3DEEDE0-A6F0-434C-AFF7-1159486F4D33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3DEEDE0-A6F0-434C-AFF7-1159486F4D33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9273068-8735-4E3A-A932-F039D69ED2DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9273068-8735-4E3A-A932-F039D69ED2DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9273068-8735-4E3A-A932-F039D69ED2DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9273068-8735-4E3A-A932-F039D69ED2DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7064AEFD-9D0E-4BD9-B460-C001FB1CE90C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7064AEFD-9D0E-4BD9-B460-C001FB1CE90C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7064AEFD-9D0E-4BD9-B460-C001FB1CE90C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7064AEFD-9D0E-4BD9-B460-C001FB1CE90C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7064AEFD-9D0E-4BD9-B460-C001FB1CE90C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7064AEFD-9D0E-4BD9-B460-C001FB1CE90C}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
