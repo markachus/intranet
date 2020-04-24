@@ -13,59 +13,113 @@ namespace Intranet.App.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
 		private EtiquetaModel _etiquetaModel;
-		private EtiquetasServices _etiquetasManager = new EtiquetasServices();
+		private IEtiquetaService _etiquetasService = DependencyService.Get<IEtiquetaService>();
 		private readonly IList<EtiquetaModel> _tags;
 
 		public Command GuardarCommand { get; set; }
+		public Command EliminarCommand { get; set; }
+
+		public Command SeleccionaColorCommand { get; set; }
 
 		public EtiquetaViewModel()
 		{
-			_etiquetaModel = new EtiquetaModel();
+		}
+
+		private void InitCommands()
+		{
+				if (_etiquetaModel != null) {
+
+					EliminarCommand = new Command(async () => { 
+
+						if (await Application.Current.MainPage.DisplayAlert(
+							"Eliminar", 
+							"Estás seguro de eliminar la etiqueta?", 
+							"OK", "Cancelar"))
+						{
+							_etiquetasService.Delete(this.Nombre);
+							if (_etiquetasService.LastRequestOk)
+							{
+								_tags?.Remove(_etiquetaModel);
+								await Application.Current.MainPage.Navigation.PopAsync();
+							}
+							else {
+								await Application.Current.MainPage.DisplayAlert(
+								"Atención",
+								_etiquetasService.LastMessage,
+								"OK");
+							}
+						}
+					});
+			
+				}
+
+
+				GuardarCommand = new Command(async () => {
+					try
+					{
+						if (String.IsNullOrEmpty(this.Nombre))
+						{
+							await Application.Current.MainPage.DisplayAlert(
+								"Faltan campos", 
+								"El nombre es obligatorio", 
+								"OK");
+							return;
+						}
+
+						if (_etiquetaModel == null) {
+							//Nueva etiqueta
+							var nueva = new EtiquetaModel { Nombre = this.Nombre };
+							_etiquetasService.Add(nueva);
+							if (_etiquetasService.LastRequestOk)
+							{
+								_tags?.Insert(0, nueva);
+								await Application.Current.MainPage.Navigation.PopAsync();
+							}
+							else
+							{
+								await Application.Current.MainPage.DisplayAlert(
+									"Atención",
+									_etiquetasService.LastMessage,
+									"OK");
+							}
+
+						} else {
+							//Etiqueta existente
+							_etiquetaModel.HexColor = this.HexColor;
+							_etiquetasService.Update(_etiquetaModel);
+							if (_etiquetasService.LastRequestOk)
+							{
+								await Application.Current.MainPage.Navigation.PopAsync();
+							}
+							else
+							{
+								await Application.Current.MainPage.DisplayAlert(
+									"Atención",
+									_etiquetasService.LastMessage,
+									"OK");
+							}
+						}
+					}
+					catch (Exception ex)
+					{
+						await Application.Current.MainPage.DisplayAlert(
+							"Error", ex.Message, "OK");
+					}
+				});
 		}
 
 		public EtiquetaViewModel(IList<EtiquetaModel> list = null, EtiquetaModel model = null)
 		{
 			_tags = list;
+			_etiquetaModel = model;
+			_nombre = _etiquetaModel?.Nombre;
+			HexColor = _etiquetaModel?.HexColor;
 
-			_etiquetaModel = model == null? new EtiquetaModel() : model;
-			_nombre = _etiquetaModel.Nombre;
-
-			GuardarCommand = new Command(async () => {
-				try
-				{
-					if (String.IsNullOrEmpty(this.Nombre))
-					{
-						await Application.Current.MainPage.DisplayAlert(
-							"Faltan campos", 
-							"El nombre es obligatorio", 
-							"OK");
-						return;
-					}
-					_etiquetaModel.Nombre = this.Nombre;
-					_etiquetasManager.AddEtiqueta(_etiquetaModel);
-					if (_etiquetasManager.LastRequestOk)
-					{
-						_tags?.Insert(0, _etiquetaModel);
-						await Application.Current.MainPage.Navigation.PopAsync();
-					}
-					else
-					{
-						await Application.Current.MainPage.DisplayAlert(
-							"Atención", 
-							_etiquetasManager.LastMessage, 
-							"OK");
-					}
-				}
-				catch (Exception ex)
-				{
-					await Application.Current.MainPage.DisplayAlert(
-						"Error", ex.Message, "OK");
-				}
-			});
+			InitCommands();
+			
 		}
 
 		private string _nombre;
-
 		public string Nombre
 		{
 			get { return _nombre; }
@@ -77,6 +131,44 @@ namespace Intranet.App.ViewModels
 				PropertyChanged?.Invoke(this, args);
 
 			}
+		}
+
+		private Color _tagColor = Color.Default;
+
+		public Color TagColor
+		{
+			get { return _tagColor; }
+			set { 
+
+				var args = new PropertyChangedEventArgs(nameof(TagColor));
+
+				if (_tagColor == value) return;
+				_tagColor = value;
+				PropertyChanged?.Invoke(this, args);
+
+			}
+		}
+
+		private string _hexColor;
+
+		public string HexColor
+		{
+			get { return _hexColor; }
+			set {
+
+				var args = new PropertyChangedEventArgs(nameof(HexColor));
+
+				if (_hexColor == value) return;
+				_hexColor = value;
+				PropertyChanged?.Invoke(this, args);
+
+				TagColor = Color.FromHex(_hexColor);
+			}
+		}
+
+		public bool IsNew
+		{
+			get { return _etiquetaModel != null; }
 		}
 
 	}

@@ -13,7 +13,8 @@ namespace Intranet.App
         {
             InitializeComponent();
 
-            //DependencyService.Register<MockDataStore>();
+            DependencyService.Register<EtiquetasServices>();
+
             MainPage = new NavigationPage(new TagsListViewPage());
         }
 

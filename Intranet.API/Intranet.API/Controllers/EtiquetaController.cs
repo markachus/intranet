@@ -162,6 +162,7 @@ namespace Intranet.API.Controllers
 
         }
 
+        [Route("{nombre}")]
         public async Task<IHttpActionResult> Delete(string nombre)
         {
             try
@@ -172,13 +173,21 @@ namespace Intranet.API.Controllers
                 try
                 {
                     repository.Delete(tag);
+                    if( await repository.SaveChangesAsync())
+                    {
+                        return Ok();
+                    }
+                    else
+                    {
+                        return InternalServerError();
+                    }
+
                 }
                 catch (InvalidOperationException ex)
                 {
                     return Conflict();
                 }
                 
-                return Ok();
             }
             catch (Exception ex)
             {

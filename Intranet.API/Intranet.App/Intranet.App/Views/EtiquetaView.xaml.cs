@@ -15,6 +15,7 @@ namespace Intranet.App.Views
         public EtiquetaView()
         {
             InitializeComponent();
-        }
+
+    }
     }
 }

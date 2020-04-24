@@ -11,14 +11,41 @@
     <ContentPage.BindingContext>
         <local:EtiquetaViewModel/>
     </ContentPage.BindingContext>
-
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Eliminar" Command="{Binding EliminarCommand}" IsEnabled="{Binding IsNew}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         
         <StackLayout Padding="40">
-            <StackLayout Orientation="Horizontal">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition Width="200"></ColumnDefinition>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+
+                <Label Text="Nombre" Grid.Row="0" Grid.Column="0"/>
+                <Entry Text="{Binding Nombre}" Grid.Row="0" Grid.Column="1" />
+                <Label Text="Color" Grid.Row="1" Grid.Column="0"/>
+                <Entry Text="{Binding HexColor}" Grid.Row="1" Grid.Column="1"/>
+                <BoxView WidthRequest="50" Color="{Binding TagColor}" Grid.Row="1" Grid.Column="2"/>
+            </Grid>
+            
+            <!--<StackLayout Orientation="Horizontal">
                 <Label Text="Nombre"/>
                 <Entry Text="{Binding Nombre}" WidthRequest="200" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Color"/>
+                <Entry Text="{Binding HexColor}" WidthRequest="150"/>
+                <BoxView WidthRequest="50" Color="{Binding TagColor}"/>
+            </StackLayout>-->
+            
             <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
                 <Button Text="Cancelar" WidthRequest="150" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Acceptar" WidthRequest="150" HorizontalOptions="FillAndExpand" Command="{Binding GuardarCommand}"></Button>

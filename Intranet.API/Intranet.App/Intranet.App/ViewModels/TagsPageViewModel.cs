@@ -14,7 +14,7 @@ namespace Intranet.App.ViewModels
     public class TagsPageViewModel : INotifyPropertyChanged
     {
 
-        private EtiquetasServices _tagService = null;
+        private IEtiquetaService _tagService = null;
         public Command LoadItemsCommand { get; set; }
         public Command NuevaTagCommand { get; set; }
 
@@ -23,7 +23,9 @@ namespace Intranet.App.ViewModels
         {
             Items = new ObservableCollection<EtiquetaModel>();
 
-            _tagService = new EtiquetasServices();
+            Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
+
+            _tagService = DependencyService.Get<IEtiquetaService>();
             LoadItemsCommand = new Command( async () => {
 
                 if (Connectivity.NetworkAccess != NetworkAccess.None)
@@ -37,8 +39,10 @@ namespace Intranet.App.ViewModels
                     }
                     catch (Exception ex)
                     {
-                        //TODO add message
-                        throw;
+                        await Application.Current.MainPage.DisplayAlert(
+                                                        "Error desconocido",
+                                                        ex.Message,
+                                                        "OK");
                     }
                     finally {
                         IsBusy = false;
@@ -56,6 +60,16 @@ namespace Intranet.App.ViewModels
             LoadItemsCommand.Execute(null);
         }
 
+        private void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
+        {
+            if (e.NetworkAccess != NetworkAccess.Internet)
+            {
+                Application.Current.MainPage.DisplayAlert(
+                                                        "Connexión",
+                                                        "No tienes conexión",
+                                                        "OK");
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<EtiquetaModel> Items { get;}

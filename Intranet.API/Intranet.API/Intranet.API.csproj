@@ -200,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\Intranet France central - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\IntranetAPI20200423194610 - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
