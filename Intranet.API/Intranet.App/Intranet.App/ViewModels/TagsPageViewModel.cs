@@ -48,7 +48,7 @@ namespace Intranet.App.ViewModels
 
             this.NuevaTagCommand = new Command(async () => {
                 await Application.Current.MainPage.Navigation.PushAsync(
-                    new EtiquetaView { BindingContext = new EtiquetaViewModel()});
+                    new EtiquetaView { BindingContext = new EtiquetaViewModel(this.Items)});
             });
 
 

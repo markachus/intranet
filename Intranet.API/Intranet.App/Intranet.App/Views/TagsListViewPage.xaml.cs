@@ -25,8 +25,10 @@ namespace Intranet.App.Views
             if (e.Item == null)
                 return;
 
+            var tagsCollection = ((TagsPageViewModel)this.BindingContext).Items;
+
             await this.Navigation.PushAsync(
-                new EtiquetaView { BindingContext = new EtiquetaViewModel((EtiquetaModel)e.Item) });
+                new EtiquetaView { BindingContext = new EtiquetaViewModel(tagsCollection, (EtiquetaModel)e.Item) });
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
