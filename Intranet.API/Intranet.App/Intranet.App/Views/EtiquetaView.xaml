@@ -35,22 +35,12 @@
                 <Entry Text="{Binding HexColor}" Grid.Row="1" Grid.Column="1"/>
                 <BoxView WidthRequest="50" Color="{Binding TagColor}" Grid.Row="1" Grid.Column="2"/>
             </Grid>
-            
-            <!--<StackLayout Orientation="Horizontal">
-                <Label Text="Nombre"/>
-                <Entry Text="{Binding Nombre}" WidthRequest="200" HorizontalOptions="FillAndExpand"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Color"/>
-                <Entry Text="{Binding HexColor}" WidthRequest="150"/>
-                <BoxView WidthRequest="50" Color="{Binding TagColor}"/>
-            </StackLayout>-->
-            
+
             <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
-                <Button Text="Cancelar" WidthRequest="150" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Cancelar" WidthRequest="150" HorizontalOptions="FillAndExpand" Command="{Binding CancelarCommand}"></Button>
                 <Button Text="Acceptar" WidthRequest="150" HorizontalOptions="FillAndExpand" Command="{Binding GuardarCommand}"></Button>
             </StackLayout>
-            
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

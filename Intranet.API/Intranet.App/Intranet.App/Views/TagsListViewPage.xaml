@@ -15,23 +15,27 @@
         <ToolbarItem Text="Refrescar" x:Name="ToolRefrescar" Command="{Binding LoadItemsCommand}"></ToolbarItem>
         <ToolbarItem Text="+" x:Name="ToolNuevo" Command="{Binding NuevaTagCommand}"></ToolbarItem>
     </ContentPage.ToolbarItems>
-
-    <ListView x:Name="MyListView"
+    <StackLayout Orientation="Vertical" Padding="20">
+        <ListView x:Name="MyListView"
             ItemsSource="{Binding Items}"
             ItemTapped="Handle_ItemTapped"
             CachingStrategy="RecycleElement"
             RefreshCommand="{Binding LoadItemsCommand}">
-    
-    <!--Built in Cells-->
-    <ListView.ItemTemplate>
-        <DataTemplate>
-            <TextCell Text="{Binding Nombre}" d:Text="{Binding Nombre}" />
-        </DataTemplate>
-    </ListView.ItemTemplate>
-        
 
-    <!--Custom View Cells-->
-    <!--
+            <!--Built in Cells-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <BoxView WidthRequest="50" Color="{Binding Color}"/>
+                            <Label Text="{Binding Nombre}" d:Text="{Binding Nombre}" HorizontalOptions="Start" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <!--Custom View Cells-->
+            <!--
     <ListView.ItemTemplate>
       <DataTemplate>
         <ViewCell>
@@ -47,5 +51,13 @@
       </DataTemplate>
     </ListView.ItemTemplate>
     -->
-  </ListView>
+        </ListView>
+        <Label x:Name="LabelInternetConnetion" 
+               HorizontalOptions="CenterAndExpand" 
+               VerticalOptions="End" 
+               Text="Sin connexión" 
+               BackgroundColor="IndianRed"
+               IsVisible="{Binding InternetKO}"></Label>
+    </StackLayout>
+    
 </ContentPage>

@@ -24,6 +24,7 @@ namespace Intranet.App.ViewModels
             Items = new ObservableCollection<EtiquetaModel>();
 
             Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
+            
 
             _tagService = DependencyService.Get<IEtiquetaService>();
             LoadItemsCommand = new Command( async () => {
@@ -62,13 +63,7 @@ namespace Intranet.App.ViewModels
 
         private void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
         {
-            if (e.NetworkAccess != NetworkAccess.Internet)
-            {
-                Application.Current.MainPage.DisplayAlert(
-                                                        "Connexión",
-                                                        "No tienes conexión",
-                                                        "OK");
-            }
+            InternetKO = e.NetworkAccess != NetworkAccess.Internet;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -83,6 +78,20 @@ namespace Intranet.App.ViewModels
 
                 if (_isBusy == value) return;
                 _isBusy = value;
+                PropertyChanged?.Invoke(this, args);
+            }
+        }
+
+        private bool _internetKO = false;
+
+        public bool InternetKO
+        {
+            get { return _internetKO; }
+            set { 
+                var args = new PropertyChangedEventArgs(nameof(InternetKO));
+
+                if (_internetKO == value) return;
+                _internetKO = value;
                 PropertyChanged?.Invoke(this, args);
             }
         }
