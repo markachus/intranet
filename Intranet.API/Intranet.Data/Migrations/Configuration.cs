@@ -21,12 +21,12 @@
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
             try { 
-            var tagPrestige = new Etiqueta { Nombre = "Prestige", FechaCreacion = DateTime.Today, UsuarioCreacion="Admin" };
-            var tagCorreo = new Etiqueta { Nombre = "Correo", FechaCreacion = DateTime.Today, UsuarioCreacion = "Admin" };
-            var tagSeguridad = new Etiqueta { Nombre = "Seguridad", FechaCreacion = DateTime.Today, UsuarioCreacion = "Admin" };
-            var tagPersonal = new Etiqueta { Nombre = "Personal", FechaCreacion = DateTime.Today, UsuarioCreacion = "Admin" };
-            var tagGeneral = new Etiqueta { Nombre = "General", FechaCreacion = DateTime.Today, UsuarioCreacion = "Admin" };
-            var tagMobile = new Etiqueta { Nombre = "MWC", FechaCreacion = DateTime.Today, UsuarioCreacion = "Admin" };
+            var tagPrestige = new Etiqueta { Nombre = "Prestige", FechaCreacion = DateTime.Now, UsuarioCreacion="Admin", FechaUltimaModificacion = DateTime.Now};
+            var tagCorreo = new Etiqueta { Nombre = "Correo", FechaCreacion = DateTime.Now, UsuarioCreacion = "Admin", FechaUltimaModificacion = DateTime.Now };
+            var tagSeguridad = new Etiqueta { Nombre = "Seguridad", FechaCreacion = DateTime.Now, UsuarioCreacion = "Admin", FechaUltimaModificacion = DateTime.Now };
+            var tagPersonal = new Etiqueta { Nombre = "Personal", FechaCreacion = DateTime.Now, UsuarioCreacion = "Admin", FechaUltimaModificacion = DateTime.Now };
+            var tagGeneral = new Etiqueta { Nombre = "General", FechaCreacion = DateTime.Now, UsuarioCreacion = "Admin", FechaUltimaModificacion = DateTime.Now };
+            var tagMobile = new Etiqueta { Nombre = "MWC", FechaCreacion = DateTime.Now, UsuarioCreacion = "Admin", FechaUltimaModificacion = DateTime.Now };
 
             context.Etiquetas.AddOrUpdate(e => e.Nombre, tagPrestige, tagCorreo, tagSeguridad, tagPersonal, tagGeneral, tagMobile);
             context.SaveChanges();

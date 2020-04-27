@@ -1,4 +1,6 @@
 using AutoMapper;
+using CacheCow.Server;
+using Intranet.API.Models;
 using Intranet.Data;
 using Intranet.Data.Repositories;
 using System;
@@ -9,7 +11,7 @@ namespace Intranet.API
 {
     /// <summary>
     /// Specifies the Unity configuration for the main container.
-    /// </summary>
+    /// </summary> 
     public static class UnityConfig
     {
         #region Unity Container
@@ -47,7 +49,6 @@ namespace Intranet.API
             container.RegisterType<IEtiquetaRepository, EtiquetaRepository>();
             container.RegisterType<IEntradaRepository, EntradaRepository>();
             container.RegisterType<IntranetDbContext>();
-
 
             //AutoMapper injection
             var config = new MapperConfiguration(cfg =>

@@ -12,5 +12,7 @@ namespace Intranet.API.Models
         public string Nombre { get; set; }
 
         public string HexColor { get; set; }
+
+        public DateTime FechaUltimaModificacion { get; set; }
     }
 }

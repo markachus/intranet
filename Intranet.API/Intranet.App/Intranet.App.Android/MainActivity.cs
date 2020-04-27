@@ -29,5 +29,11 @@ namespace Intranet.App.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
+
+        protected override void OnDestroy()
+        {
+            Akavache.BlobCache.Shutdown();
+        }
     }
 }

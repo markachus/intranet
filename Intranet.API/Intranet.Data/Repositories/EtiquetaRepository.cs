@@ -42,6 +42,18 @@ namespace Intranet.Data.Repositories
                 ToArrayAsync();
         }
 
+        public async Task<Etiqueta[]> GetAllAsync(string searchQuery)
+        {
+            if (string.IsNullOrEmpty(searchQuery)) {
+                return await GetAllAsync();
+            }
+
+            searchQuery = searchQuery.Trim();
+            return await _context.Etiquetas.Where( t => t.Nombre.Contains(searchQuery)).
+                OrderByDescending(t => t.FechaCreacion).
+                ToArrayAsync();
+        }
+
         public async Task<Etiqueta> GetAsync(string nombre)
         {
             var  tag = await _context.Etiquetas.

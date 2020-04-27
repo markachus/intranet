@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using CacheCow.Server.WebApi;
+using CacheCow.Server;
 
 namespace Intranet.API
 {
@@ -19,6 +21,10 @@ namespace Intranet.API
             //    routeTemplate: "api/{controller}/{id}",
             //    defaults: new { id = RouteParameter.Optional }
             //);
+
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = 
+                new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
+
         }
     }
 }

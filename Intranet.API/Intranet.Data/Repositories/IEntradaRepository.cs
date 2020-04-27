@@ -21,5 +21,6 @@ namespace Intranet.Data.Repositories
         void AddEtiqueta(Entrada entrada, Etiqueta tag);
         void RemoveEtiqueta(Entrada entrada, Etiqueta tag);
 
+
     }
 }

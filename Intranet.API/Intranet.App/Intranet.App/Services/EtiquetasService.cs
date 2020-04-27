@@ -1,4 +1,6 @@
-﻿using Intranet.App.Models;
+﻿using Akavache;
+using CacheCow.Client;
+using Intranet.App.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,6 +9,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Reactive.Linq;
 
 namespace Intranet.App.Services
 {
@@ -40,7 +43,12 @@ namespace Intranet.App.Services
         private HttpClient GetClient()
         {
 
-            HttpClient client = new HttpClient(GetInsecureHandler());
+            HttpClient client = new HttpClient(new CachingHandler { 
+                InnerHandler = new HttpClientHandler()
+            });
+
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+            //client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             return client;
         }
 
@@ -133,6 +141,27 @@ namespace Intranet.App.Services
         async Task<IEnumerable<EtiquetaModel>> IEtiquetaService.GetAll()
         {
 
+            IEnumerable<EtiquetaModel> tags = null;
+            var cache = BlobCache.InMemory;
+            var cachedTags = cache.GetAndFetchLatest("tags", () => GetAllRemote(), offset =>
+            {
+                TimeSpan elapse = DateTimeOffset.Now - offset;
+                return elapse > new TimeSpan(hours: 0, minutes: 1, seconds: 0);
+            });
+
+            cachedTags.Subscribe((updateRes) =>
+            {
+                tags = updateRes;    
+            });
+
+            tags = await cachedTags.FirstOrDefaultAsync();
+            return tags;
+        }
+
+
+        async Task<IEnumerable<EtiquetaModel>> GetAllRemote()
+        {
+
             HttpClient client = GetClient();
             var response = await client.GetAsync($"{_baseAddress}/{_url}");
 
@@ -143,6 +172,8 @@ namespace Intranet.App.Services
             {
                 this._message = string.Empty;
                 IEnumerable<EtiquetaModel> tags = JsonConvert.DeserializeObject<IEnumerable<EtiquetaModel>>(sTags);
+
+                //await BlobCache.UserAccount.InsertObject("tags", tags); //Save to the cache
                 return tags;
             }
             else

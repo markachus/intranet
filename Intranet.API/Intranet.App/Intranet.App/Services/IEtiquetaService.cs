@@ -22,5 +22,7 @@ namespace Intranet.App.Services
 
         Task<IEnumerable<EtiquetaModel>> GetAll();
 
+
+
     }
 }

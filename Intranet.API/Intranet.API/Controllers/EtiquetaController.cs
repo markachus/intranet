@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CacheCow.Server.WebApi;
 using Intranet.API.Attributes;
 using Intranet.API.Models;
 using Intranet.Data.Entities;
@@ -9,11 +10,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 
 namespace Intranet.API.Controllers
 {
-    //[RequireHttpsAttribute]
     [RoutePrefix("api/tags")]
     public class EtiquetaController : ApiController
     {
@@ -26,14 +27,16 @@ namespace Intranet.API.Controllers
             this.mapper = mapper;
         }
 
-        [Route]
-        public async Task<IHttpActionResult> GetAll()
+        [Route(Name = "GetTags")]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetAll(string searchQuery = "")
         {
-            return Ok(mapper.Map<EtiquetaModel[]>(await repository.GetAllAsync()));
+            return Ok(mapper.Map<EtiquetaModel[]>(await repository.GetAllAsync(searchQuery)));
         }
 
         [Route("{nombre}", Name ="GetTag")]
-        public async Task<IHttpActionResult> Get(string nombre)
+        [HttpGet]
+        public async Task<IHttpActionResult> GetTag( string nombre)
         {
             try
             {
@@ -50,6 +53,7 @@ namespace Intranet.API.Controllers
         }
 
         [Route()]
+        [HttpPost]
         public async Task<IHttpActionResult> Post(EtiquetaModel model)
         {
             try
@@ -62,8 +66,10 @@ namespace Intranet.API.Controllers
 
                     var newTag = mapper.Map<Etiqueta>(model);
 
-                    newTag.FechaCreacion = DateTime.Today;
+                    newTag.FechaCreacion = DateTime.Now;
                     newTag.UsuarioCreacion = "Admin";
+                    newTag.FechaUltimaModificacion = DateTime.Now;
+                    newTag.UsuarioModificacion = "Admin";
 
                     repository.Add(newTag);
                     if (await repository.SaveChangesAsync())
@@ -90,48 +96,8 @@ namespace Intranet.API.Controllers
 
         }
 
-        [Route()]
-        public async Task<IHttpActionResult> Put(EtiquetaModel model)
-        {
-            try
-            {
-
-                if (ModelState.IsValid)
-                {
-                    var tag = await repository.GetAsync(model.Nombre);
-                    if (tag != null) return BadRequest($"La etiqueta {model.Nombre} ya existe");
-
-                    var newTag = mapper.Map<Etiqueta>(model);
-
-                    newTag.FechaCreacion = DateTime.Today;
-                    newTag.UsuarioCreacion = "Admin";
-
-                    repository.Add(newTag);
-                    if (await repository.SaveChangesAsync())
-                    {
-
-                        var newModel = mapper.Map<EtiquetaModel>(newTag);
-
-                        return CreatedAtRoute("GetTag", new { nombre = model.Nombre }, newModel);
-                    }
-                    else
-                    {
-                        return InternalServerError();
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-
-                return InternalServerError();
-            }
-
-            return BadRequest(ModelState);
-
-        }
-
         [Route("{nombre}")]
+        [HttpPut]
         public async Task<IHttpActionResult> Put(string nombre, EtiquetaModel model)
         {
             try
@@ -163,6 +129,7 @@ namespace Intranet.API.Controllers
         }
 
         [Route("{nombre}")]
+        [HttpDelete]
         public async Task<IHttpActionResult> Delete(string nombre)
         {
             try
@@ -194,6 +161,14 @@ namespace Intranet.API.Controllers
                 return InternalServerError();
             }
 
+        }
+
+        [HttpOptions]
+        [Route()]
+        public IHttpActionResult GetEtiquetasOptions() {
+
+            HttpContext.Current.Response.Headers.Add("Allow", "GET,OPTIONS,POST,PUT,DELETE");
+            return Ok();
         }
 
     }
