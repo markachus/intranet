@@ -1,4 +1,6 @@
 ﻿using Intranet.Data.Entities;
+using Intranet.Data.Helpers;
+using Intranet.Data.ResourceParameters;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,8 +12,7 @@ namespace Intranet.Data.Repositories
         IntranetDbContext Context { get; }
         Task<bool> SaveChangesAsync();
 
-        Task<Etiqueta[]> GetAllAsync(string searchQuery);
-        Task<Etiqueta[]> GetAllAsync();
+        Task<PagedList<Etiqueta>> GetAllAsync(EtiquetasResourceParameters tagsParemeters);
         Task<Etiqueta> GetAsync(string nombre);
 
         void Add(Etiqueta tag);

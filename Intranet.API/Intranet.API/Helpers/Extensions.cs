@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Intranet.Api.Extensions
+namespace Intranet.Api.Helpers
 {
     public static class Extensions
     {

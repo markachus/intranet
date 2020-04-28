@@ -54,6 +54,8 @@
     <Compile Include="Entities\Entrada.cs" />
     <Compile Include="Entities\Etiqueta.cs" />
     <Compile Include="Entities\IntranetTrackingBase.cs" />
+    <Compile Include="Helpers\PagedList.cs" />
+    <Compile Include="Helpers\ResourceTypeUri.cs" />
     <Compile Include="IntranetDbContext.cs" />
     <Compile Include="Migrations\202004201548519_InitialMigration.cs" />
     <Compile Include="Migrations\202004201548519_InitialMigration.designer.cs">
@@ -65,6 +67,8 @@
     <Compile Include="Repositories\EtiquetaRepository.cs" />
     <Compile Include="Repositories\IEntradaRepository.cs" />
     <Compile Include="Repositories\IEtiquetaRepository.cs" />
+    <Compile Include="ResourceParameters\EntradasResourceParameters.cs" />
+    <Compile Include="ResourceParameters\EtiquetasResourceParameters.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -3,7 +3,10 @@ using CacheCow.Server.WebApi;
 using Intranet.API.Attributes;
 using Intranet.API.Models;
 using Intranet.Data.Entities;
+using Intranet.Data.Helpers;
 using Intranet.Data.Repositories;
+using Intranet.Data.ResourceParameters;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,10 +32,60 @@ namespace Intranet.API.Controllers
 
         [Route(Name = "GetTags")]
         [HttpGet]
-        public async Task<IHttpActionResult> GetAll(string searchQuery = "")
+        public async Task<IHttpActionResult> GetAll([FromUri] EtiquetasResourceParameters tagsParameters)
         {
-            return Ok(mapper.Map<EtiquetaModel[]>(await repository.GetAllAsync(searchQuery)));
+
+            if (tagsParameters == null) tagsParameters = new EtiquetasResourceParameters();
+            var results = await repository.GetAllAsync(tagsParameters);
+
+            var previousPageLink = results.HasPrevious ? CreateEtiquetasResourceUri(tagsParameters, ResourceTypeUri.PreviousPage) : null;
+            var nextPageLink = results.HasNext ? CreateEtiquetasResourceUri(tagsParameters, ResourceTypeUri.NextPage) : null;
+
+            var paginationMetadata = new
+            {
+                totalCount = results.TotalCount,
+                pageSize = results.PageSize,
+                currentPage = results.CurrentPage,
+                totalPages = results.TotalPages,
+                previousPageLink,
+                nextPageLink
+            };
+
+            System.Web.HttpContext.Current.Response.Headers.
+                Add("X-Pagination", JsonConvert.SerializeObject(paginationMetadata));
+
+
+            return Ok(mapper.Map<IEnumerable<EtiquetaModel>>(results));
         }
+        private string CreateEtiquetasResourceUri(EtiquetasResourceParameters entradasParams, ResourceTypeUri type)
+        {
+
+            switch (type)
+            {
+                case ResourceTypeUri.NextPage:
+                    return Url.Link("GetTags",
+                        new
+                        {
+                            PageNumber = entradasParams.PageNumber + 1,
+                            PageSize = entradasParams.PageSize
+                        });
+                case ResourceTypeUri.PreviousPage:
+                    return Url.Link("GetTags",
+                        new
+                        {
+                            PageNumber = entradasParams.PageNumber - 1,
+                            PageSize = entradasParams.PageSize
+                        });
+                default:
+                    return Url.Link("GetPosts",
+                    new
+                    {
+                        PageNumber = entradasParams.PageNumber,
+                        PageSize = entradasParams.PageSize
+                    });
+            }
+        }
+
 
         [Route("{nombre}", Name ="GetTag")]
         [HttpGet]

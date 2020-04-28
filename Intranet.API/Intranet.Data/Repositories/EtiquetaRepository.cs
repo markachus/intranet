@@ -1,4 +1,6 @@
 ﻿using Intranet.Data.Entities;
+using Intranet.Data.Helpers;
+using Intranet.Data.ResourceParameters;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -34,24 +36,28 @@ namespace Intranet.Data.Repositories
             _context.Etiquetas.Remove(tag);
         }
 
-        public async Task<Etiqueta[]> GetAllAsync()
-        {
+        //public async Task<Etiqueta[]> GetAllAsync()
+        //{
 
-            return await _context.Etiquetas.
-                OrderByDescending(t => t.FechaCreacion).
-                ToArrayAsync();
-        }
+        //    return await _context.Etiquetas.
+        //        OrderByDescending(t => t.FechaCreacion).
+        //        ToArrayAsync();
+        //}
 
-        public async Task<Etiqueta[]> GetAllAsync(string searchQuery)
+        public async Task<PagedList<Etiqueta>> GetAllAsync(EtiquetasResourceParameters tagsParameters)
         {
-            if (string.IsNullOrEmpty(searchQuery)) {
-                return await GetAllAsync();
+            IQueryable<Etiqueta> query = _context.Etiquetas as IQueryable<Etiqueta>;
+
+            //Busqueda en el nombre de la etiqueta
+            if (!String.IsNullOrEmpty(tagsParameters.SearchQuery)) {
+
+                var searchQuery = tagsParameters.SearchQuery.Trim();
+                query = query.Where(t => t.Nombre.Contains(searchQuery));
             }
 
-            searchQuery = searchQuery.Trim();
-            return await _context.Etiquetas.Where( t => t.Nombre.Contains(searchQuery)).
-                OrderByDescending(t => t.FechaCreacion).
-                ToArrayAsync();
+            query = query.OrderByDescending(t => t.FechaCreacion);
+
+            return await PagedList<Etiqueta>.Create(query, tagsParameters.PageNumber, tagsParameters.PageSize);
         }
 
         public async Task<Etiqueta> GetAsync(string nombre)

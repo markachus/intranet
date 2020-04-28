@@ -225,7 +225,7 @@
     <Compile Include="Attributes\RequireHttpAttribute.cs" />
     <Compile Include="Controllers\EntradaController.cs" />
     <Compile Include="Controllers\EtiquetaController.cs" />
-    <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

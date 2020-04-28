@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
+using Intranet.API.Data;
 using Intranet.API.Models;
 using Intranet.Data.Entities;
+using Intranet.Data.Helpers;
 using Intranet.Data.Repositories;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,18 +30,62 @@ namespace Intranet.API.Controllers
             this._mapper = mapper;
         }
 
-        [Route]
-        public async Task<IHttpActionResult> GetAll(string search = "", int page = 1, string sort = DESC)
+        [Route(Name = "GetPosts")]
+        public async Task<IHttpActionResult> GetAll([FromUri] EntradasResourceParameters param)
         {
             try
             {
-                var results = await _repository.GetAllAsync(true);
-                return Ok(_mapper.Map<EntradaModel[]>(results));
+                if (param == null) param = new EntradasResourceParameters();
+                var results = await _repository.GetAllAsync(param, true);
 
+                var previousPageLink = results.HasPrevious ? CreateEntradasResourceUri(param, ResourceTypeUri.PreviousPage) : null;
+                var nextPageLink = results.HasNext? CreateEntradasResourceUri(param, ResourceTypeUri.NextPage) : null;
+
+                var paginationMetadata = new
+                {
+                    totalCount = results.TotalCount,
+                    pageSize = results.PageSize,
+                    currentPage = results.CurrentPage,
+                    totalPages = results.TotalPages,
+                    previousPageLink,
+                    nextPageLink
+                };
+
+                System.Web.HttpContext.Current.Response.Headers.
+                    Add("X-Pagination", JsonConvert.SerializeObject(paginationMetadata));
+
+                return Ok(_mapper.Map<EntradaModel[]>(results));
+                
             }
             catch (Exception ex)
             {
                 return InternalServerError();
+            }
+        }
+
+        private string CreateEntradasResourceUri(EntradasResourceParameters entradasParams, ResourceTypeUri type) {
+
+            switch (type) {
+                case ResourceTypeUri.NextPage:
+                    return Url.Link("GetPosts", 
+                        new { 
+                            PageNumber = entradasParams.PageNumber + 1,
+                            PageSize = entradasParams.PageSize
+                        });
+                case ResourceTypeUri.PreviousPage:
+                    return Url.Link("GetPosts",
+                        new
+                        {
+                            PageNumber = entradasParams.PageNumber -1,
+                            PageSize = entradasParams.PageSize
+                        });
+                default:
+                    return Url.Link("GetPosts",
+                    new
+                    {
+                        PageNumber = entradasParams.PageNumber,
+                        PageSize = entradasParams.PageSize
+                    });
             }
         }
 

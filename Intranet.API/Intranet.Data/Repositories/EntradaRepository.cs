@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using Intranet.API.Data;
+using Intranet.Data.Helpers;
 
 namespace Intranet.Data.Repositories
 {
@@ -34,8 +36,10 @@ namespace Intranet.Data.Repositories
             _context.Entradas.Remove(entrada);
         }
 
-        async Task<Entrada[]> IEntradaRepository.GetAllAsync(bool incluyeEtiquetas = false)
+        async Task<PagedList<Entrada>> IEntradaRepository.GetAllAsync(EntradasResourceParameters param, bool incluyeEtiquetas = false)
         {
+            if (param == null) throw new ArgumentNullException(nameof(param));
+
             IQueryable<Entrada> query = _context.Entradas.Where(p => !p.Eliminado);
             if (incluyeEtiquetas)
             {
@@ -44,7 +48,7 @@ namespace Intranet.Data.Repositories
 
             query = query.OrderByDescending(p => p.FechaCreacion);
 
-            return await query.ToArrayAsync();
+            return await PagedList<Entrada>.Create(query, param.PageNumber, param.PageSize);
         }
 
         async Task<Entrada> IEntradaRepository.GetAsync(Guid EntradaId)

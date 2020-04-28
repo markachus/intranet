@@ -1,4 +1,6 @@
-﻿using Intranet.Data.Entities;
+﻿using Intranet.API.Data;
+using Intranet.Data.Entities;
+using Intranet.Data.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,7 +13,7 @@ namespace Intranet.Data.Repositories
 
         IntranetDbContext Context { get; }
 
-        Task<Entrada[]> GetAllAsync(bool incluyeEtiquetas = false);
+        Task<PagedList<Entrada>> GetAllAsync(EntradasResourceParameters param, bool incluyeEtiquetas = false);
         Task<Entrada> GetAsync(Guid EntradaId);
 
         void Add(Entrada entrada);
