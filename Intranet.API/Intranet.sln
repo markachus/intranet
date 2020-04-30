@@ -16,6 +16,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intranet.App", "Intranet.Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intranet.App.Android", "Intranet.App\Intranet.App.Android\Intranet.App.Android.csproj", "{7064AEFD-9D0E-4BD9-B460-C001FB1CE90C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intranet.IdSrv", "Intranet.IdSrv\Intranet.IdSrv.csproj", "{D27F29CB-43B7-4BCA-A8E6-07FC531BF690}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{7064AEFD-9D0E-4BD9-B460-C001FB1CE90C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7064AEFD-9D0E-4BD9-B460-C001FB1CE90C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7064AEFD-9D0E-4BD9-B460-C001FB1CE90C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D27F29CB-43B7-4BCA-A8E6-07FC531BF690}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D27F29CB-43B7-4BCA-A8E6-07FC531BF690}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D27F29CB-43B7-4BCA-A8E6-07FC531BF690}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D27F29CB-43B7-4BCA-A8E6-07FC531BF690}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
