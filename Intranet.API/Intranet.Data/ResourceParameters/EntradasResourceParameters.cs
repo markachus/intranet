@@ -16,10 +16,33 @@ namespace Intranet.API.Data
         public int PageSize { get; set; } = 3;
 
         private int _pageNumber = 1;
-        public int PageNumber { get => _pageNumber; 
-            set {
+        public int PageNumber
+        {
+            get => _pageNumber;
+            set
+            {
                 if (value > _maxSize) _pageNumber = _maxSize;
                 else _pageNumber = value;
-        } }
+            }
+        }
+
+        private string _orderBy = "FechaCreacion";
+        public string OrderBy
+        {
+            get => _orderBy;
+            set
+            {
+                if (value == null)
+                {
+                    _orderBy = "FechaCreacion";
+                }
+                else
+                {
+                    _orderBy = value;
+                }
+            }
+        }
+
+        public string SearchQuery { get; set; }
     }
 }

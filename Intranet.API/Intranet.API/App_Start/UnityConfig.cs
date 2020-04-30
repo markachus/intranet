@@ -1,11 +1,13 @@
 using AutoMapper;
 using CacheCow.Server;
-using Intranet.API.Models;
+using Intranet.Api.Helpers;
+using Intranet.Data.Models;
 using Intranet.Data;
 using Intranet.Data.Repositories;
 using System;
 
 using Unity;
+using Intranet.Data.Helpers;
 
 namespace Intranet.API
 {
@@ -49,6 +51,8 @@ namespace Intranet.API
             container.RegisterType<IEtiquetaRepository, EtiquetaRepository>();
             container.RegisterType<IEntradaRepository, EntradaRepository>();
             container.RegisterType<IntranetDbContext>();
+
+            container.RegisterType<IPropertyMappingService, PropertyMappingService>();
 
             //AutoMapper injection
             var config = new MapperConfiguration(cfg =>

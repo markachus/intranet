@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Intranet.API.Models;
+using Intranet.Data.Models;
 using Intranet.Data.Entities;
 using System;
 using System.Collections.Generic;

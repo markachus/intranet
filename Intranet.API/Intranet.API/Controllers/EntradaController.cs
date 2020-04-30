@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using Intranet.API.Data;
-using Intranet.API.Models;
+using Intranet.Data.Models;
 using Intranet.Data.Entities;
 using Intranet.Data.Helpers;
 using Intranet.Data.Repositories;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -23,11 +24,13 @@ namespace Intranet.API.Controllers
         private const string DESC = "DESC";
         private readonly IEntradaRepository _repository;
         private readonly IMapper _mapper;
+        private readonly IPropertyMappingService _propertyMappingService;
 
-        public EntradaController(IEntradaRepository repository, IMapper mapper)
+        public EntradaController(IEntradaRepository repository, IMapper mapper, IPropertyMappingService propertyMappingService)
         {
             this._repository = repository;
             this._mapper = mapper;
+            this._propertyMappingService = propertyMappingService;
         }
 
         [Route(Name = "GetPosts")]
@@ -36,6 +39,11 @@ namespace Intranet.API.Controllers
             try
             {
                 if (param == null) param = new EntradasResourceParameters();
+
+                if (!_propertyMappingService.IsPropertyMappingValid<EntradaModel, Entrada>(param.OrderBy)){
+                    return BadRequest();
+                }
+
                 var results = await _repository.GetAllAsync(param, true);
 
                 var previousPageLink = results.HasPrevious ? CreateEntradasResourceUri(param, ResourceTypeUri.PreviousPage) : null;
@@ -67,24 +75,32 @@ namespace Intranet.API.Controllers
 
             switch (type) {
                 case ResourceTypeUri.NextPage:
+
                     return Url.Link("GetPosts", 
                         new { 
                             PageNumber = entradasParams.PageNumber + 1,
-                            PageSize = entradasParams.PageSize
+                            entradasParams.PageSize,
+                            entradasParams.OrderBy,
+                            entradasParams.SearchQuery
                         });
+
                 case ResourceTypeUri.PreviousPage:
-                    return Url.Link("GetPosts",
-                        new
-                        {
-                            PageNumber = entradasParams.PageNumber -1,
-                            PageSize = entradasParams.PageSize
-                        });
+
+                    return Url.Link("GetPosts", new
+                    {
+                        PageNumber = entradasParams.PageNumber - 1,
+                        entradasParams.PageSize,
+                        entradasParams.OrderBy,
+                        entradasParams.SearchQuery
+                    });
                 default:
-                    return Url.Link("GetPosts",
-                    new
+
+                    return Url.Link("GetPosts", new
                     {
                         PageNumber = entradasParams.PageNumber,
-                        PageSize = entradasParams.PageSize
+                        entradasParams.PageSize,
+                        entradasParams.OrderBy,
+                        entradasParams.SearchQuery
                     });
             }
         }

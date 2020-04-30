@@ -2,23 +2,27 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using Intranet.API.Data;
 using Intranet.Data.Helpers;
+using Intranet.Data.Models;
 
 namespace Intranet.Data.Repositories
 {
     public class EntradaRepository : IEntradaRepository
     {
         private readonly IntranetDbContext _context;
-        
+        private readonly IPropertyMappingService _mappingService;
+
         IntranetDbContext IEntradaRepository.Context { get { return _context;} }
 
-        public EntradaRepository(IntranetDbContext context)
+        public EntradaRepository(IntranetDbContext context, IPropertyMappingService mappingService)
         {
             this._context = context;
+            this._mappingService = mappingService ?? throw new ArgumentNullException(nameof(mappingService));
         }
 
         void IEntradaRepository.Add(Entrada entrada)
@@ -46,7 +50,15 @@ namespace Intranet.Data.Repositories
                 query = query.Include(prop => prop.Etiquetas);
             }
 
-            query = query.OrderByDescending(p => p.FechaCreacion);
+            if (!string.IsNullOrEmpty(param.SearchQuery)) {
+                var searchQuery = param.SearchQuery.Trim();
+
+                query = query.Where(e => e.Titulo.Contains(searchQuery) ||
+                    e.Contenido.Contains(searchQuery));
+            }
+
+            var entradaPropertyMappingDictionary = _mappingService.GetPropertyMapping<EntradaModel, Entrada>();
+            query = query.ApplySort(param.OrderBy, entradaPropertyMappingDictionary);
 
             return await PagedList<Entrada>.Create(query, param.PageNumber, param.PageSize);
         }

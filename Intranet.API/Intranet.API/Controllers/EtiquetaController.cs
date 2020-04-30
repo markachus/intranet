@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using CacheCow.Server.WebApi;
 using Intranet.API.Attributes;
-using Intranet.API.Models;
+using Intranet.Data.Models;
 using Intranet.Data.Entities;
 using Intranet.Data.Helpers;
 using Intranet.Data.Repositories;

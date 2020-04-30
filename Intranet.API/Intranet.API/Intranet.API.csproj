@@ -230,8 +230,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IntranetMappingProfile.cs" />
-    <Compile Include="Models\EntradaModel.cs" />
-    <Compile Include="Models\EtiquetaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

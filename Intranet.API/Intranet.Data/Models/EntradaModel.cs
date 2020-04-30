@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Intranet.API.Models
+namespace Intranet.Data.Models
 {
     public class EntradaModel
     {

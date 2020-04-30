@@ -43,6 +43,9 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,7 +57,13 @@
     <Compile Include="Entities\Entrada.cs" />
     <Compile Include="Entities\Etiqueta.cs" />
     <Compile Include="Entities\IntranetTrackingBase.cs" />
+    <Compile Include="Helpers\IPropertyMapping.cs" />
+    <Compile Include="Helpers\IPropertyMappingService.cs" />
+    <Compile Include="Helpers\IQueryableExtensions.cs" />
     <Compile Include="Helpers\PagedList.cs" />
+    <Compile Include="Helpers\PropertyMapping.cs" />
+    <Compile Include="Helpers\PropertyMappingService.cs" />
+    <Compile Include="Helpers\PropertyMappingValue.cs" />
     <Compile Include="Helpers\ResourceTypeUri.cs" />
     <Compile Include="IntranetDbContext.cs" />
     <Compile Include="Migrations\202004201548519_InitialMigration.cs" />
@@ -62,6 +71,8 @@
       <DependentUpon>202004201548519_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\EntradaModel.cs" />
+    <Compile Include="Models\EtiquetaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EntradaRepository.cs" />
     <Compile Include="Repositories\EtiquetaRepository.cs" />
