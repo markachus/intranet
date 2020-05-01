@@ -152,7 +152,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49485</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44352/</IISUrl>
+          <IISUrl>https://localhost:44352/identity</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

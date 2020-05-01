@@ -13,10 +13,17 @@ namespace Intranet.IdSrv.Config
             return new[] {
                 new Client { 
                     Enabled = true,
-                    ClientName = "Native",
-                    Flow = Flows.Implicit,
+                    ClientId = "Native",
+                    ClientName = "Native Mobile",
+                    ClientSecrets = new List<Secret>(){ 
+                        new Secret("secret".Sha256())  
+                    },
+                    Flow = Flows.ResourceOwner,
                     RequireConsent = true,
-                    RedirectUris = new List<string>{ Constants.IntranetMobileClient}
+                    RedirectUris = new List<string>{ Constants.IntranetMobileClient},
+                    AllowedScopes = new List<string>{
+                        IdentityServer3.Core.Constants.StandardScopes.OpenId
+                    }
                 }
             };
         }

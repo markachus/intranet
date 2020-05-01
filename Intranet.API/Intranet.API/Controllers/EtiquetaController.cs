@@ -30,6 +30,7 @@ namespace Intranet.API.Controllers
             this.mapper = mapper;
         }
 
+        [Authorize]
         [Route(Name = "GetTags")]
         [HttpGet]
         public async Task<IHttpActionResult> GetAll([FromUri] EtiquetasResourceParameters tagsParameters)
