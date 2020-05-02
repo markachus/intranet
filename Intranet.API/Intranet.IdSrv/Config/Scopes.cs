@@ -13,7 +13,19 @@ namespace Intranet.IdSrv.Config
             return new List<Scope>()
             {
                 StandardScopes.OpenId,
-                StandardScopes.Profile
+                StandardScopes.Profile,
+                new Scope { 
+                    Name = "intranetapi",
+                    DisplayName = "Intranet Api Scope",
+                    Type = ScopeType.Resource,
+                    Emphasize = false,
+                    Enabled = true
+                },
+                new Scope {
+                    Name = "read",
+                    DisplayName = "Read User Data",
+                    Enabled = true
+                }
             };
         }
     }

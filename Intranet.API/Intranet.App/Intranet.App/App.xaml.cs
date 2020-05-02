@@ -14,7 +14,6 @@ namespace Intranet.App
         {
             InitializeComponent();
 
-            //Akavache.Registrations.Start("IntranetApp");
             BlobCache.ApplicationName = "IntranetApp";
 
             DependencyService.Register<EtiquetasServices>();

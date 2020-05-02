@@ -15,6 +15,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Security.Claims;
 
 namespace Intranet.API.Controllers
 {
@@ -36,11 +37,25 @@ namespace Intranet.API.Controllers
         public async Task<IHttpActionResult> GetAll([FromUri] EtiquetasResourceParameters tagsParameters)
         {
 
+            var claims = User as ClaimsPrincipal;
+
             if (tagsParameters == null) tagsParameters = new EtiquetasResourceParameters();
             var results = await repository.GetAllAsync(tagsParameters);
 
-            var previousPageLink = results.HasPrevious ? CreateEtiquetasResourceUri(tagsParameters, ResourceTypeUri.PreviousPage) : null;
-            var nextPageLink = results.HasNext ? CreateEtiquetasResourceUri(tagsParameters, ResourceTypeUri.NextPage) : null;
+
+            string previousPageLink= null;
+            string nextPageLink = null;
+
+            //try
+            //{
+            previousPageLink = results.HasPrevious ? CreateEtiquetasResourceUri(tagsParameters, ResourceTypeUri.PreviousPage) : null;
+            nextPageLink = results.HasNext ? CreateEtiquetasResourceUri(tagsParameters, ResourceTypeUri.NextPage) : null;
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw;
+            //}
 
             var paginationMetadata = new
             {
@@ -68,21 +83,24 @@ namespace Intranet.API.Controllers
                         new
                         {
                             PageNumber = entradasParams.PageNumber + 1,
-                            PageSize = entradasParams.PageSize
+                            entradasParams.PageSize,
+                            entradasParams.SearchQuery
                         });
                 case ResourceTypeUri.PreviousPage:
                     return Url.Link("GetTags",
                         new
                         {
                             PageNumber = entradasParams.PageNumber - 1,
-                            PageSize = entradasParams.PageSize
+                            entradasParams.PageSize,
+                            entradasParams.SearchQuery
                         });
                 default:
-                    return Url.Link("GetPosts",
+                    return Url.Link("GetTags",
                     new
                     {
-                        PageNumber = entradasParams.PageNumber,
-                        PageSize = entradasParams.PageSize
+                        entradasParams.PageNumber,
+                        entradasParams.PageSize,
+                        entradasParams.SearchQuery
                     });
             }
         }

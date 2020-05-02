@@ -13,13 +13,6 @@ namespace Intranet.API
     {
         protected void Application_Start()
         {
-            
-            UnityWebApiActivator.Start();
-
-            AreaRegistration.RegisterAllAreas();
-            GlobalConfiguration.Configure(WebApiConfig.Register);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
     }
 }
