@@ -57,6 +57,21 @@ namespace Intranet.IdSrv.Config
                     {
                         Constants.IdSrvUri
                     } 
+                },
+                new Client {
+                    Enabled = true,
+                    ClientId = "intranet_resourceowner",
+                    ClientName = "Intramet",
+                    ClientSecrets = new List<Secret>(){
+                        new Secret("secret".Sha256())
+                    },
+                    Flow = Flows.ResourceOwner,
+                    AllowedScopes = new List<string>{
+                        IdentityServer3.Core.Constants.StandardScopes.OpenId,
+                        IdentityServer3.Core.Constants.StandardScopes.Profile,
+                        IdentityServer3.Core.Constants.StandardScopes.OfflineAccess,
+                        "intranetapi"
+                    }
                 }
             };
         }

@@ -17,7 +17,7 @@ namespace Intranet.IdSrv.Config
                 new InMemoryUser { 
                     Username="mef",
                     Password="secret",
-                    Subject = "1",
+                    Subject = "informatica6@gargallohotels.es",
                     Claims = new[]{ 
                             new Claim(IdentityServer3.Core.Constants.ClaimTypes.GivenName, "Marc"),
                             new Claim(IdentityServer3.Core.Constants.ClaimTypes.FamilyName, "Esteve")
@@ -26,7 +26,7 @@ namespace Intranet.IdSrv.Config
                 new InMemoryUser {
                     Username="dga",
                     Password="secret",
-                    Subject = "2",
+                    Subject = "informatica3@gargallohotels.es",
                     Claims = new[]{
                             new Claim(IdentityServer3.Core.Constants.ClaimTypes.GivenName, "Daniel"),
                             new Claim(IdentityServer3.Core.Constants.ClaimTypes.FamilyName, "García")
@@ -36,7 +36,7 @@ namespace Intranet.IdSrv.Config
                 new InMemoryUser {
                     Username="jsl",
                     Password="secret",
-                    Subject = "3",
+                    Subject = "informatica4@gargallohotels.es",
                     Claims = new[]{
                             new Claim(IdentityServer3.Core.Constants.ClaimTypes.GivenName, "Judà"),
                             new Claim(IdentityServer3.Core.Constants.ClaimTypes.FamilyName, "Sanz")

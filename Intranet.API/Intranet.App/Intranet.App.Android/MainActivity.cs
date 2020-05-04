@@ -23,21 +23,22 @@ namespace Intranet.App.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
-            var authenticator = new OAuth2Authenticator(
-            "native_implicit",
-            "read",
-            new Uri("https://markachusidsrv.azurewebsites.net/identity/connect/authorize"),
-            new Uri("https://markachusidsrv.azurewebsites.net/identity"));
-
-            authenticator.Completed += Authenticator_Completed;
-
-            StartActivity(authenticator.GetUI(this));
-        }
-
-        private void Authenticator_Completed(object sender, AuthenticatorCompletedEventArgs e)
-        {
             LoadApplication(new App());
+
+            //var authenticator = new OAuth2Authenticator(
+            //"native_implicit",
+            //"read",
+            //new Uri("https://markachusidsrv.azurewebsites.net/identity/connect/authorize"),
+            //new Uri("https://markachusidsrv.azurewebsites.net/identity"));
+
+            //authenticator.Completed += Authenticator_Completed;
+
+            //StartActivity(authenticator.GetUI(this));
         }
+
+        //private void Authenticator_Completed(object sender, AuthenticatorCompletedEventArgs e)
+        //{
+        //}
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

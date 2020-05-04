@@ -17,8 +17,9 @@ namespace Intranet.App
             BlobCache.ApplicationName = "IntranetApp";
 
             DependencyService.Register<EtiquetasServices>();
+            DependencyService.Register<AuthService>();
 
-            MainPage = new NavigationPage(new TagsListViewPage());
+            MainPage = new NavigationPage(new LoginViewPage());
         }
 
         protected override void OnStart()

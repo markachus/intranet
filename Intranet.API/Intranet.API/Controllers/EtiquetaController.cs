@@ -42,20 +42,11 @@ namespace Intranet.API.Controllers
             if (tagsParameters == null) tagsParameters = new EtiquetasResourceParameters();
             var results = await repository.GetAllAsync(tagsParameters);
 
-
             string previousPageLink= null;
             string nextPageLink = null;
 
-            //try
-            //{
             previousPageLink = results.HasPrevious ? CreateEtiquetasResourceUri(tagsParameters, ResourceTypeUri.PreviousPage) : null;
             nextPageLink = results.HasNext ? CreateEtiquetasResourceUri(tagsParameters, ResourceTypeUri.NextPage) : null;
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw;
-            //}
 
             var paginationMetadata = new
             {

@@ -13,7 +13,7 @@ using System.Reactive.Linq;
 
 namespace Intranet.App.Services
 {
-    public class EtiquetasServices : IEtiquetaService
+    public class EtiquetasServices: IEtiquetaService
     {
         public EtiquetasServices()
         {
@@ -47,10 +47,42 @@ namespace Intranet.App.Services
                 InnerHandler = new HttpClientHandler()
             });
 
+            var authService = DependencyService.Get<AuthService>();
+            var token = authService.TokenReponse;
+
+            if (string.IsNullOrEmpty(token?.AccessToken)) throw new UnauthorizedAccessException("No se encontró token access");
+
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token.AccessToken);
             client.DefaultRequestHeaders.Add("Accept", "application/json");
-            //client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
             return client;
         }
+
+
+        private async Task<HttpClient> GetClientAsync()
+        {
+
+            HttpClient client = new HttpClient(new CachingHandler
+            {
+                InnerHandler = new HttpClientHandler()
+            });
+
+            var authService = DependencyService.Get<AuthService>();
+            var token = authService.TokenReponse;
+
+            if (string.IsNullOrEmpty(token?.AccessToken)) throw new UnauthorizedAccessException("No se encontró token access");
+
+            if (token.IsExpired)
+            {
+                token = await authService.GetTokenRefreshTokenAsync(token.RefreshToken);
+            }
+
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token.AccessToken);
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+            return client;
+        }
+
 
         public HttpClientHandler GetInsecureHandler()
         {
@@ -142,27 +174,27 @@ namespace Intranet.App.Services
         {
 
             IEnumerable<EtiquetaModel> tags = null;
-            var cache = BlobCache.InMemory;
-            var cachedTags = cache.GetAndFetchLatest("tags", () => GetAllRemote(), offset =>
-            {
-                TimeSpan elapse = DateTimeOffset.Now - offset;
-                return elapse > new TimeSpan(hours: 0, minutes: 1, seconds: 0);
-            });
+            //var cache = BlobCache.InMemory;
+            //var cachedTags = cache.GetAndFetchLatest("tags", () => GetAllRemote(), offset =>
+            //{
+            //    TimeSpan elapse = DateTimeOffset.Now - offset;
+            //    return elapse > new TimeSpan(hours: 0, minutes: 1, seconds: 0);
+            //});
 
-            cachedTags.Subscribe((updateRes) =>
-            {
-                tags = updateRes;    
-            });
+            //cachedTags.Subscribe((updateRes) =>
+            //{
+            //    tags = updateRes;    
+            //});
 
-            tags = await cachedTags.FirstOrDefaultAsync();
+            //tags = await cachedTags.FirstOrDefaultAsync();
+            tags = await GetAllRemote();
             return tags;
         }
-
 
         async Task<IEnumerable<EtiquetaModel>> GetAllRemote()
         {
 
-            HttpClient client = GetClient();
+            HttpClient client = await GetClientAsync();
             var response = await client.GetAsync($"{_baseAddress}/{_url}");
 
             this._statusCode = response.StatusCode;
@@ -173,7 +205,6 @@ namespace Intranet.App.Services
                 this._message = string.Empty;
                 IEnumerable<EtiquetaModel> tags = JsonConvert.DeserializeObject<IEnumerable<EtiquetaModel>>(sTags);
 
-                //await BlobCache.UserAccount.InsertObject("tags", tags); //Save to the cache
                 return tags;
             }
             else
@@ -184,5 +215,6 @@ namespace Intranet.App.Services
             }
         }
 
+       
     }
 }
