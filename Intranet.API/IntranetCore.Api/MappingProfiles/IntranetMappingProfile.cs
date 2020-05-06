@@ -21,7 +21,8 @@ namespace IntranetCore.Api
                 .ForMember(e => e.FechaUltimaModificacion, m => m.MapFrom(p => p.Etiqueta.FechaUltimaModificacion));
 
             CreateMap<EtiquetaForCreationModel, Etiqueta>();
-            CreateMap<EtiquetaForUpdateModel, Etiqueta>();
+            CreateMap<EtiquetaForUpdateModel, Etiqueta>()
+                .ReverseMap();
 
             CreateMap<Entrada, EntradaModel>().
                 ReverseMap().

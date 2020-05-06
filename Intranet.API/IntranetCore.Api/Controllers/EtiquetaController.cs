@@ -13,6 +13,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace Intranet.API.Controllers
 {
@@ -20,12 +21,12 @@ namespace Intranet.API.Controllers
     [Route("api/tags")]
     public class EtiquetaController : ControllerBase
     {
-        private readonly IEtiquetaRepository repository;
+        private readonly IEtiquetaRepository _repository;
         private readonly IMapper mapper;
 
         public EtiquetaController(IEtiquetaRepository repository, IMapper mapper)
         {
-            this.repository = repository;
+            this._repository = repository;
             this.mapper = mapper;
         }
 
@@ -34,7 +35,7 @@ namespace Intranet.API.Controllers
         {
 
             if (tagsParameters == null) tagsParameters = new EtiquetasResourceParameters();
-            var results = await repository.GetAllAsync(tagsParameters);
+            var results = await _repository.GetAllAsync(tagsParameters);
 
             var previousPageLink = results.HasPrevious ? CreateEtiquetasResourceUri(tagsParameters, ResourceTypeUri.PreviousPage) : null;
             var nextPageLink = results.HasNext ? CreateEtiquetasResourceUri(tagsParameters, ResourceTypeUri.NextPage) : null;
@@ -85,20 +86,20 @@ namespace Intranet.API.Controllers
         }
 
 
-        [HttpGet("{nombre}", Name ="GetTag")]
-        public async Task<ActionResult<EtiquetaModel>> GetTag( string nombre)
+        [HttpGet("{nombre}", Name = "GetTag")]
+        public async Task<ActionResult<EtiquetaModel>> GetTag(string nombre)
         {
-                var tag = await repository.GetAsync(nombre);
-                if (tag == null) return NotFound();
+            var tag = await _repository.GetAsync(nombre);
+            if (tag == null) return NotFound();
 
-                return Ok(mapper.Map<EtiquetaModel>(tag));
-            
+            return Ok(mapper.Map<EtiquetaModel>(tag));
+
         }
 
         [HttpPost]
         public async Task<ActionResult<EtiquetaForCreationModel>> Post(EtiquetaModel model)
         {
-            var tag = await repository.GetAsync(model.Nombre);
+            var tag = await _repository.GetAsync(model.Nombre);
             if (tag != null) return BadRequest($"La etiqueta {model.Nombre} ya existe");
 
             var newTag = mapper.Map<Etiqueta>(model);
@@ -108,9 +109,9 @@ namespace Intranet.API.Controllers
             newTag.FechaUltimaModificacion = DateTime.Now;
             newTag.UsuarioModificacion = "Admin";
 
-            repository.Add(newTag);
+            _repository.Add(newTag);
 
-            await repository.SaveChangesAsync();
+            await _repository.SaveChangesAsync();
             var newModel = mapper.Map<EtiquetaModel>(newTag);
             return CreatedAtRoute("GetTag", new { nombre = model.Nombre }, newModel);
 
@@ -119,14 +120,14 @@ namespace Intranet.API.Controllers
         [HttpPut("{nombre}")]
         public async Task<ActionResult<EtiquetaModel>> Put(string nombre, EtiquetaForUpdateModel model)
         {
-            var tag = await repository.GetAsync(nombre);
+            var tag = await _repository.GetAsync(nombre);
             if (tag == null) return NotFound();
 
             mapper.Map(model, tag);
             tag.FechaUltimaModificacion = DateTime.Now;
             tag.UsuarioModificacion = "Admin";
 
-            await repository.SaveChangesAsync();
+            await _repository.SaveChangesAsync();
             return Ok(mapper.Map<EtiquetaModel>(tag));
         }
 
@@ -134,13 +135,13 @@ namespace Intranet.API.Controllers
         public async Task<IActionResult> Delete(string nombre)
         {
 
-            var tag = await repository.GetAsync(nombre);
+            var tag = await _repository.GetAsync(nombre);
             if (tag == null) return NotFound();
-                
+
             try
             {
-                repository.Delete(tag);
-                await repository.SaveChangesAsync();
+                _repository.Delete(tag);
+                await _repository.SaveChangesAsync();
                 return NoContent();
             }
             catch (InvalidOperationException ex)
@@ -149,6 +150,29 @@ namespace Intranet.API.Controllers
             }
 
         }
+
+        [HttpPatch("{nombre}")]
+        public async Task<IActionResult> UpdatePartialEtiqueta(
+            string nombre, 
+            JsonPatchDocument<EtiquetaForUpdateModel> patchDocument) {
+
+            Etiqueta tagFromRepo = await _repository.GetAsync(nombre);
+            if (tagFromRepo == null) { 
+                return NotFound(); 
+            }
+
+            EtiquetaForUpdateModel tagToPatch = mapper.Map<EtiquetaForUpdateModel>(tagFromRepo);
+            patchDocument.ApplyTo(tagToPatch);
+
+            if (!TryValidateModel(tagToPatch)) return ValidationProblem();
+
+            mapper.Map(tagToPatch, tagFromRepo);
+
+            await _repository.SaveChangesAsync();
+
+            return NoContent();
+        }
+
 
         [Microsoft.AspNetCore.Mvc.HttpOptions]
         public IActionResult GetEtiquetasOptions() {
