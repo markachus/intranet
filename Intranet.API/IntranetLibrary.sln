@@ -16,6 +16,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intranet.App", "Intranet.Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intranet.App.Android", "Intranet.App\Intranet.App.Android\Intranet.App.Android.csproj", "{7064AEFD-9D0E-4BD9-B460-C001FB1CE90C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntranetCore.Api", "IntranetCore.Api\IntranetCore.Api.csproj", "{9A6532B3-330C-4FD5-B078-E4297F0727F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntranetCore.Data", "IntranetCore.Data\IntranetCore.Data.csproj", "{C85D2B4C-215B-409F-A62D-1835547DA158}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +44,14 @@ Global
 		{7064AEFD-9D0E-4BD9-B460-C001FB1CE90C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7064AEFD-9D0E-4BD9-B460-C001FB1CE90C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7064AEFD-9D0E-4BD9-B460-C001FB1CE90C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9A6532B3-330C-4FD5-B078-E4297F0727F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A6532B3-330C-4FD5-B078-E4297F0727F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A6532B3-330C-4FD5-B078-E4297F0727F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A6532B3-330C-4FD5-B078-E4297F0727F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C85D2B4C-215B-409F-A62D-1835547DA158}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C85D2B4C-215B-409F-A62D-1835547DA158}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C85D2B4C-215B-409F-A62D-1835547DA158}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C85D2B4C-215B-409F-A62D-1835547DA158}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
