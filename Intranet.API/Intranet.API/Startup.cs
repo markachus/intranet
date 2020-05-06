@@ -29,7 +29,6 @@ namespace Intranet.API
                 RequiredScopes = new[] { "intranetapi"}
             });
 
-
             app.UseWebApi(config);
 
         }

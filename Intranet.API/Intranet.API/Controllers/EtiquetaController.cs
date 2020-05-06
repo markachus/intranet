@@ -33,6 +33,7 @@ namespace Intranet.API.Controllers
 
         [Authorize]
         [Route(Name = "GetTags")]
+        [HttpCache(DefaultExpirySeconds = 60)]
         [HttpGet]
         public async Task<IHttpActionResult> GetAll([FromUri] EtiquetasResourceParameters tagsParameters)
         {
@@ -97,6 +98,7 @@ namespace Intranet.API.Controllers
         }
 
 
+        [HttpCache(DefaultExpirySeconds = 60)]
         [Route("{nombre}", Name ="GetTag")]
         [HttpGet]
         public async Task<IHttpActionResult> GetTag( string nombre)
