@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IntranetCore.Data</name>
+    </assembly>
+    <members>
+        <member name="M:IntranetCore.Data.Helpers.PagedList`1.#ctor(System.Collections.Generic.List{`0},System.Int32,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="items">Elements of a page</param>
+            <param name="count">Total of elements in the collection without pagination</param>
+            <param name="pageSize">Page size</param>
+            <param name="pageNumber">Current page number</param>
+        </member>
+        <member name="T:IntranetCore.Data.Models.EntradaForCreationModel">
+            <summary>
+            Modelo para crear una nueva entrada o post en la intranet
+            </summary>
+        </member>
+        <member name="P:IntranetCore.Data.Models.EntradaForCreationModel.Titulo">
+            <summary>
+            Titulo de la entrada
+            </summary>
+        </member>
+        <member name="P:IntranetCore.Data.Models.EntradaForCreationModel.Contenido">
+            <summary>
+            Contenido de la entrada
+            </summary>
+        </member>
+        <member name="P:IntranetCore.Data.Models.EntradaForCreationModel.Etiquetas">
+            <summary>
+            Lista de nombres de etiquetas para asociar con la entrada que se quiere crear
+            </summary>
+        </member>
+        <member name="T:IntranetCore.Data.Models.EntradaModel">
+            <summary>
+            Entrada/post de la intranet
+            </summary>
+        </member>
+        <member name="P:IntranetCore.Data.Models.EntradaModel.Id">
+            <summary>
+            Identificador único
+            </summary>
+        </member>
+        <member name="P:IntranetCore.Data.Models.EntradaModel.Titulo">
+            <summary>
+            Titulo de la entrada
+            </summary>
+        </member>
+        <member name="P:IntranetCore.Data.Models.EntradaModel.Contenido">
+            <summary>
+            Contenido de la entrada
+            </summary>
+        </member>
+        <member name="P:IntranetCore.Data.Models.EntradaModel.Etiquetas">
+            <summary>
+            Etiquetas asociadas con esta entrada
+            </summary>
+        </member>
+        <member name="T:IntranetCore.Data.Models.EtiquetaForAssociationModel">
+            <summary>
+            Modelo para crear asociar una etiqueta
+            </summary>
+        </member>
+        <member name="P:IntranetCore.Data.Models.EtiquetaForAssociationModel.Nombre">
+            <summary>
+            Nombre de la etiqueta
+            </summary>
+        </member>
+        <member name="T:IntranetCore.Data.Models.EtiquetaForCreationModel">
+            <summary>
+            Modelo para crear una nueva etiqueta
+            </summary>
+        </member>
+        <member name="P:IntranetCore.Data.Models.EtiquetaForCreationModel.Nombre">
+            <summary>
+            Nombre de la etiqueta. Debe ser único
+            </summary>
+        </member>
+        <member name="P:IntranetCore.Data.Models.EtiquetaForCreationModel.HexColor">
+            <summary>
+            Color de la etiqueta en hexadecimal. Ej: #FF4499
+            </summary>
+        </member>
+        <member name="T:IntranetCore.Data.Models.EtiquetaForUpdateModel">
+            <summary>
+            Modelo para actualizar una entrada o post en la intranet
+            </summary>
+        </member>
+        <member name="P:IntranetCore.Data.Models.EtiquetaForUpdateModel.Nombre">
+            <summary>
+            Nombre de la etiqueta
+            </summary>
+        </member>
+        <member name="P:IntranetCore.Data.Models.EtiquetaForUpdateModel.HexColor">
+            <summary>
+            Color de la etiqueta en hexadecimal. Ej: #FF4499
+            </summary>
+        </member>
+        <member name="P:IntranetCore.Data.Models.EtiquetaModel.Nombre">
+            <summary>
+            Nombre de la etiqueta
+            </summary>
+        </member>
+        <member name="P:IntranetCore.Data.Models.EtiquetaModel.HexColor">
+            <summary>
+            Color de la etiqueta en hexadecimal. Ej: #FF4499
+            </summary>
+        </member>
+        <member name="P:IntranetCore.Data.Models.EtiquetaModel.FechaUltimaModificacion">
+            <summary>
+            Fecha de la última modificación efectuada a la etiqueta
+            </summary>
+        </member>
+        <member name="P:IntranetCore.API.Data.EntradasResourceParameters.PageSize">
+            <summary>
+            Tamaño de página. Máximo 20
+            </summary>
+        </member>
+        <member name="P:IntranetCore.API.Data.EntradasResourceParameters.PageNumber">
+            <summary>
+            Numero de página. Empieza en 1.
+            </summary>
+        </member>
+        <member name="P:IntranetCore.API.Data.EntradasResourceParameters.OrderBy">
+            <summary>
+            Campos de ordenación separados por coma
+            </summary>
+            <remarks>Ejemplo: OrderBy=FechaCreacion descending, Titulo ascending</remarks>
+        </member>
+        <member name="P:IntranetCore.API.Data.EntradasResourceParameters.SearchQuery">
+            <summary>
+            Texto que se buscara en el título y contenido de la entrada
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IntranetCore.Data.Entities
 {
+#pragma warning disable CS1591
     public abstract class IntranetTrackingBase
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -20,4 +21,5 @@ namespace IntranetCore.Data.Entities
         [Required]
         public bool Eliminado { get; set; }
     }
+#pragma warning restore CS1591
 }

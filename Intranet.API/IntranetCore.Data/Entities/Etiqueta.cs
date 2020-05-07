@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IntranetCore.Data.Entities
 {
+#pragma warning disable CS1591
     public class Etiqueta : IntranetTrackingBase
     {
         [Required, StringLength(50)]
@@ -15,4 +16,5 @@ namespace IntranetCore.Data.Entities
         public virtual List<EntradaEtiqueta> Entradas { get => _entradas; set => _entradas = value; }
 
     }
+#pragma warning restore CS1591
 }

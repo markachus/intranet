@@ -18,12 +18,13 @@ namespace IntranetCore.Api
         {
             var host = CreateHostBuilder(args).Build();
 
-            using (var scope = host.Services.CreateScope()) {
-                var context = scope.ServiceProvider.GetService<IntranetDbContext>();
-                context.Database.EnsureDeleted();
-                context.Database.Migrate();
-            
-            }
+            //using (var scope = host.Services.CreateScope())
+            //{
+            //    var context = scope.ServiceProvider.GetService<IntranetDbContext>();
+            //    context.Database.EnsureDeleted();
+            //    context.Database.Migrate();
+
+            //}
             host.Run();
         }
 

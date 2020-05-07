@@ -150,7 +150,22 @@ namespace Intranet.API.Controllers
             }
 
         }
-
+        /// <summary>
+        /// Actualiza parcialmente una etiqueta 
+        /// </summary>
+        /// <param name="nombre">Nombre de la etiqueta</param>
+        /// <param name="patchDocument">Conjunto de operacions a aplicar a la etiqueta</param>
+        /// <returns></returns>
+        /// <remarks>Ejemplo: esto actualiza el color de la etiqueta \
+        /// PATCH /tags/nombre \
+        /// [ \
+        ///     {\
+        ///         "op": "replace", \
+        ///         "from": "/HexColor", \
+        ///         "value": "#000000" \
+        ///     } \
+        /// ]
+        /// </remarks>
         [HttpPatch("{nombre}")]
         public async Task<IActionResult> UpdatePartialEtiqueta(
             string nombre, 

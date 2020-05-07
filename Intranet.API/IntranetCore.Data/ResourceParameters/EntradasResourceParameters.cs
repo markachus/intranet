@@ -13,9 +13,16 @@ namespace IntranetCore.API.Data
         }
 
         const int _maxSize = 20;
+        /// <summary>
+        /// Tamaño de página. Máximo 20
+        /// </summary>
         public int PageSize { get; set; } = 3;
 
         private int _pageNumber = 1;
+        
+        /// <summary>
+        /// Numero de página. Empieza en 1.
+        /// </summary>
         public int PageNumber
         {
             get => _pageNumber;
@@ -27,6 +34,10 @@ namespace IntranetCore.API.Data
         }
 
         private string _orderBy = "FechaCreacion";
+        /// <summary>
+        /// Campos de ordenación separados por coma
+        /// </summary>
+        /// <remarks>Ejemplo: OrderBy=FechaCreacion descending, Titulo ascending</remarks>
         public string OrderBy
         {
             get => _orderBy;
@@ -43,6 +54,9 @@ namespace IntranetCore.API.Data
             }
         }
 
+        /// <summary>
+        /// Texto que se buscara en el título y contenido de la entrada
+        /// </summary>
         public string SearchQuery { get; set; }
     }
 }

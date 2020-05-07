@@ -6,6 +6,8 @@ using System.Text;
 
 namespace IntranetCore.Data.Entities
 {
+
+#pragma warning disable CS1591
     public class EntradaEtiqueta
     {
         [Key, ForeignKey("Entrada")]
@@ -17,4 +19,6 @@ namespace IntranetCore.Data.Entities
         public Guid EtiquetaId { get; set; }
         public virtual Etiqueta Etiqueta { get; set; }
     }
+
+#pragma warning restore CS1591
 }

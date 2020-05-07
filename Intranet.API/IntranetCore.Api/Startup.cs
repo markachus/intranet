@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Security;
+using System.Reflection;
 using System.Threading.Tasks;
 using AutoMapper;
 using IntranetCore.Data.Helpers;
@@ -17,6 +19,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
 
 namespace IntranetCore.Api
@@ -102,6 +105,34 @@ namespace IntranetCore.Api
 
             services.AddSingleton<IMapper>(config.CreateMapper());
 
+            services.AddSwaggerGen(swaggerOptions =>
+            {
+                swaggerOptions.SwaggerDoc(
+                    "OpenApiSpecification", 
+                    new OpenApiInfo { 
+                        Version = "1.0",
+                        Title = "Documentación de la Intranet API",
+                        Description = "Está documentación se pone a servicio de aquellos departamentos que " +
+                        "desean consumir la API Intranet desde una Mobile App o desde un App Web",
+                        Contact = new OpenApiContact {  
+                            Email = "markachus@gmail.com", 
+                            Name = "Marc Esteve" 
+                        }
+                });
+
+                //Include comments in this library
+                var xmlCommentsFile = Assembly.GetExecutingAssembly().GetName().Name + ".xml";
+                var xmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentsFile);
+                swaggerOptions.IncludeXmlComments(xmlCommentsFullPath);
+
+
+                var xmlSchemaCommentsFullPath = Path.Combine(AppContext.BaseDirectory, "IntranetCore.Data.xml");
+                swaggerOptions.IncludeXmlComments(xmlSchemaCommentsFullPath);
+
+            });
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -111,6 +142,16 @@ namespace IntranetCore.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(options => {
+                options.SwaggerEndpoint(
+                    "/swagger/OpenApiSpecification/swagger.json",
+                    "Intranet API");
+                options.RoutePrefix = "";
+            });
 
             app.UseRouting();
 

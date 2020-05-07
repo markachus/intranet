@@ -33,6 +33,11 @@ namespace Intranet.API.Controllers
             this._propertyMappingService = propertyMappingService;
         }
 
+        /// <summary>
+        /// Obtiene todas las entradas teniendo en cuenta que las opciones de paginacion, ordenación y búsqueda de <paramref name="param"/> />
+        /// </summary>
+        /// <param name="param">Opciones para ordenar, buscar y paginar las entradas</param>
+        /// <returns></returns>
         [HttpGet(Name = "GetPosts")]
         public async Task<ActionResult<EntradaModel>> GetAll([FromQuery] EntradasResourceParameters param)
         {
@@ -97,6 +102,11 @@ namespace Intranet.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Obtiene una entrada por su Id
+        /// </summary>
+        /// <param name="entradaId">Id de la entrada</param>
+        /// <returns></returns>
         [HttpGet("{entradaId}", Name = "GetEntrada")]
         public async Task<ActionResult<EntradaModel>> Get(Guid entradaId) {
 
@@ -107,6 +117,11 @@ namespace Intranet.API.Controllers
             return Ok(model);
         }
 
+        /// <summary>
+        /// Crea una nueva entrada y asocia las etiquetas con ésta
+        /// </summary>
+        /// <param name="model">Información para crear una nueva entrada</param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Post(EntradaForCreationModel model) {
             Entrada entrada = _mapper.Map<Entrada>(model);
@@ -141,6 +156,12 @@ namespace Intranet.API.Controllers
             return CreatedAtRoute("GetEntrada", new { entradaId = entrada.Id }, newModel);
         }
 
+        /// <summary>
+        /// Modifica una entrada por su identificador
+        /// </summary>
+        /// <param name="entradaId">Identificador de la entrada</param>
+        /// <param name="model">nformación para modificar una entrada</param>
+        /// <returns></returns>
         [HttpPut("{entradaId}")]
         public async Task<ActionResult<EntradaModel>> Put(Guid entradaId, EntradaModel model)
         {
@@ -153,6 +174,11 @@ namespace Intranet.API.Controllers
         }
 
 
+        /// <summary>
+        /// Elimina una entrada y las associaciones con etiquetas que tuviese
+        /// </summary>
+        /// <param name="entradaId">identfiador de la entrada</param>
+        /// <returns></returns>
         [HttpDelete("{entradaId}")]
         public async Task<IActionResult> Delete(Guid entradaId)
         {
@@ -165,7 +191,12 @@ namespace Intranet.API.Controllers
                 
         }
 
-        
+        /// <summary>
+        /// Obtiene una etiqueta asociada a una entrada
+        /// </summary>
+        /// <param name="entradaId">Identificador de la entrada</param>
+        /// <param name="tagNombre">Nombre de la etiqueta</param>
+        /// <returns></returns>
         [HttpGet("{entradaId}/tags/{tagNombre}", Name = "GetEtiqueta")]
         public async Task<ActionResult<EtiquetaModel>> GetEtiqueta(Guid entradaId, string tagNombre) {
             Entrada entrada = await _repository.GetAsync(entradaId);
@@ -181,7 +212,12 @@ namespace Intranet.API.Controllers
             return Ok(_mapper.Map<EtiquetaModel>(tag));
         }
 
-
+        /// <summary>
+        /// Da de alta una associación entre una entrada y una etiqueta 
+        /// </summary>
+        /// <param name="entradaId">Identificador de la entrada</param>
+        /// <param name="model">Información para associar a una etiqueta</param>
+        /// <returns></returns>
         [HttpPost("{entradaId}/tags")]
         public async Task<ActionResult<EtiquetaModel>> AddEtiqueta(Guid entradaId, EtiquetaForAssociationModel model)
         {
@@ -210,6 +246,12 @@ namespace Intranet.API.Controllers
                 }
         }
 
+        /// <summary>
+        /// Elimina la associacón entre una entrada y una etiqueta
+        /// </summary>
+        /// <param name="entradaId">Id de la entrada</param>
+        /// <param name="tagNombre">Nombre de la etiqueta</param>
+        /// <returns></returns>
         [HttpDelete("{entradaId}/tags/{tagNombre}")]
         public async Task<IActionResult> DeleteEtiqueta(Guid entradaId, string tagNombre)
         {

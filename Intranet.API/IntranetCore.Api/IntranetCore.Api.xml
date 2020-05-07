@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IntranetCore.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Intranet.API.Controllers.EntradaController.GetAll(IntranetCore.API.Data.EntradasResourceParameters)">
+            <summary>
+            Obtiene todas las entradas teniendo en cuenta que las opciones de paginacion, ordenación y búsqueda de <paramref name="param"/> />
+            </summary>
+            <param name="param">Opciones para ordenar, buscar y paginar las entradas</param>
+            <returns></returns>
+        </member>
+        <member name="M:Intranet.API.Controllers.EntradaController.Get(System.Guid)">
+            <summary>
+            Obtiene una entrada por su Id
+            </summary>
+            <param name="entradaId">Id de la entrada</param>
+            <returns></returns>
+        </member>
+        <member name="M:Intranet.API.Controllers.EntradaController.Post(IntranetCore.Data.Models.EntradaForCreationModel)">
+            <summary>
+            Crea una nueva entrada y asocia las etiquetas con ésta
+            </summary>
+            <param name="model">Información para crear una nueva entrada</param>
+            <returns></returns>
+        </member>
+        <member name="M:Intranet.API.Controllers.EntradaController.Put(System.Guid,IntranetCore.Data.Models.EntradaModel)">
+            <summary>
+            Modifica una entrada por su identificador
+            </summary>
+            <param name="entradaId">Identificador de la entrada</param>
+            <param name="model">nformación para modificar una entrada</param>
+            <returns></returns>
+        </member>
+        <member name="M:Intranet.API.Controllers.EntradaController.Delete(System.Guid)">
+            <summary>
+            Elimina una entrada y las associaciones con etiquetas que tuviese
+            </summary>
+            <param name="entradaId">identfiador de la entrada</param>
+            <returns></returns>
+        </member>
+        <member name="M:Intranet.API.Controllers.EntradaController.GetEtiqueta(System.Guid,System.String)">
+            <summary>
+            Obtiene una etiqueta asociada a una entrada
+            </summary>
+            <param name="entradaId">Identificador de la entrada</param>
+            <param name="tagNombre">Nombre de la etiqueta</param>
+            <returns></returns>
+        </member>
+        <member name="M:Intranet.API.Controllers.EntradaController.AddEtiqueta(System.Guid,IntranetCore.Data.Models.EtiquetaForAssociationModel)">
+            <summary>
+            Da de alta una associación entre una entrada y una etiqueta 
+            </summary>
+            <param name="entradaId">Identificador de la entrada</param>
+            <param name="model">Información para associar a una etiqueta</param>
+            <returns></returns>
+        </member>
+        <member name="M:Intranet.API.Controllers.EntradaController.DeleteEtiqueta(System.Guid,System.String)">
+            <summary>
+            Elimina la associacón entre una entrada y una etiqueta
+            </summary>
+            <param name="entradaId">Id de la entrada</param>
+            <param name="tagNombre">Nombre de la etiqueta</param>
+            <returns></returns>
+        </member>
+        <member name="M:Intranet.API.Controllers.EtiquetaController.UpdatePartialEtiqueta(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{IntranetCore.Data.Models.EtiquetaForUpdateModel})">
+            <summary>
+            Actualiza parcialmente una etiqueta 
+            </summary>
+            <param name="nombre">Nombre de la etiqueta</param>
+            <param name="patchDocument">Conjunto de operacions a aplicar a la etiqueta</param>
+            <returns></returns>
+            <remarks>Ejemplo: esto actualiza el color de la etiqueta \
+            PATCH /tags/nombre \
+            [ \
+                {\
+                    "op": "replace", \
+                    "from": "/HexColor", \
+                    "value": "#000000" \
+                } \
+            ]
+            </remarks>
+        </member>
+    </members>
+</doc>
