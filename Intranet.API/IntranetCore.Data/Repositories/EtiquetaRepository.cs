@@ -22,6 +22,10 @@ namespace IntranetCore.Data.Repositories
 
         public void Add(Etiqueta tag)
         {
+            tag.UsuarioCreacion = "Admin";
+            tag.UsuarioModificacion = "Admin";
+            tag.FechaCreacion = DateTime.Now;
+            tag.FechaUltimaModificacion = DateTime.Now;
             _context.Etiquetas.Add(tag);
         }
 

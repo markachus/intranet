@@ -85,12 +85,7 @@
         </member>
         <member name="T:IntranetCore.Data.Models.EtiquetaForUpdateModel">
             <summary>
-            Modelo para actualizar una entrada o post en la intranet
-            </summary>
-        </member>
-        <member name="P:IntranetCore.Data.Models.EtiquetaForUpdateModel.Nombre">
-            <summary>
-            Nombre de la etiqueta
+            Modelo para actualizar una etiqueta
             </summary>
         </member>
         <member name="P:IntranetCore.Data.Models.EtiquetaForUpdateModel.HexColor">

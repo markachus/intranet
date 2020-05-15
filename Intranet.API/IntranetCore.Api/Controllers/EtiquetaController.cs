@@ -14,11 +14,14 @@ using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.JsonPatch;
+using IntranetCore.Api.Attributes;
 
 namespace Intranet.API.Controllers
 {
+    [Produces("application/json", "application/xml")]
     [ApiController]
-    [Route("api/tags")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:ApiVersion}/tags")]
     public class EtiquetaController : ControllerBase
     {
         private readonly IEtiquetaRepository _repository;
@@ -30,6 +33,13 @@ namespace Intranet.API.Controllers
             this.mapper = mapper;
         }
 
+        /// <summary>
+        /// Obtiene las etiquetas teniendo en cuenta las opciones de paginación, ordenación y búsqueda.
+        /// </summary>
+        /// <param name="tagsParameters">Información de paginación ordenación y búsqueda. 
+        /// <seealso cref="EtiquetasResourceParameters"/></param>
+        /// <returns>ActionResult de EtiquetaModel</returns>
+        [ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status200OK)]
         [HttpGet(Name = "GetTags")]
         public async Task<ActionResult<EtiquetaModel>> GetAll([FromQuery] EtiquetasResourceParameters tagsParameters)
         {
@@ -86,6 +96,16 @@ namespace Intranet.API.Controllers
         }
 
 
+        /// <summary>
+        /// Obtiene una etiqueta por su nombre
+        /// </summary>
+        /// <param name="nombre">Nombre de la etiqueta. Se ignoran las mayúsculas.</param>
+        /// <returns></returns>
+        /// <response code="200">Devuelve la etiqueta</response>
+        /// <response code="404">No se encontró ninguna etiqueta con el nombre proporcionado</response>
+        [ResponseCache(Duration = 120)]
+        [ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status404NotFound)]
+        [ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status200OK)]
         [HttpGet("{nombre}", Name = "GetTag")]
         public async Task<ActionResult<EtiquetaModel>> GetTag(string nombre)
         {
@@ -96,6 +116,20 @@ namespace Intranet.API.Controllers
 
         }
 
+        /// <summary>
+        /// Crea una nueva etiqueta
+        /// </summary>
+        /// <param name="model">Modelo para crear una etiqueta nueva</param>
+        /// <returns>ActionResult de EtiquetaModel</returns>
+        /// <response code="201">Nueva etiqueta</response>
+        /// <response code="400">La etiqueta ya existe</response>
+        [ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status201Created)]
+        [Consumes("application/json",
+            "application/vnd.intranet.etiquetaforcreation.v1+json")]
+        [Produces("application/vnd.intranet.etiqueta.v1+json")]
+        [RequestHeaderMatchesMediaType("Content-Type",
+            "application/json",
+            "application/vnd.intranet.etiquetaforcreation.v1+json")]
         [HttpPost]
         public async Task<ActionResult<EtiquetaForCreationModel>> Post(EtiquetaModel model)
         {
@@ -117,6 +151,17 @@ namespace Intranet.API.Controllers
 
         }
 
+
+        /// <summary>
+        /// Modifica la etiqueta
+        /// </summary>
+        /// <param name="nombre">Nombre identificador de la etiqueta</param>
+        /// <param name="model">Información a actualizar de la etiqueta. Solo el HexColor</param>
+        /// <returns></returns>
+        /// <response code="404">No se encontró etiqueta con este nombre</response>
+        /// <response code="200">Etiqueta modificada</response>
+        [ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status404NotFound)]
+        [ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status200OK)]
         [HttpPut("{nombre}")]
         public async Task<ActionResult<EtiquetaModel>> Put(string nombre, EtiquetaForUpdateModel model)
         {
@@ -131,6 +176,14 @@ namespace Intranet.API.Controllers
             return Ok(mapper.Map<EtiquetaModel>(tag));
         }
 
+        /// <summary>
+        /// Elimina un etiqueta por nombre
+        /// </summary>
+        /// <param name="nombre">Nombre de le etiqueta a eliminar</param>
+        /// <returns>IActionResult</returns>
+        /// <reponse code="409">La etiqueta está en uso</reponse>
+        [ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status409Conflict)]
+        [ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status204NoContent)]
         [HttpDelete("{nombre}")]
         public async Task<IActionResult> Delete(string nombre)
         {
@@ -166,6 +219,8 @@ namespace Intranet.API.Controllers
         ///     } \
         /// ]
         /// </remarks>
+        [ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status404NotFound)]
+        [ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status204NoContent)]
         [HttpPatch("{nombre}")]
         public async Task<IActionResult> UpdatePartialEtiqueta(
             string nombre, 
@@ -188,7 +243,11 @@ namespace Intranet.API.Controllers
             return NoContent();
         }
 
-
+        /// <summary>
+        /// Opciones disponibles en este recurso
+        /// </summary>
+        /// <returns></returns>
+        [ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status200OK)]
         [Microsoft.AspNetCore.Mvc.HttpOptions]
         public IActionResult GetEtiquetasOptions() {
 

@@ -4,12 +4,30 @@
         <name>IntranetCore.Api</name>
     </assembly>
     <members>
+        <member name="M:IntranetCore.Api.Controllers.EtiquetaControllerV2.GetAll(IntranetCore.Data.ResourceParameters.EtiquetasResourceParameters)">
+            <summary>
+            V2. Obtiene las etiquetas teniendo en cuenta las opciones de paginación, ordenación y búsqueda.
+            </summary>
+            <param name="tagsParameters">Información de paginación ordenación y búsqueda. 
+            <seealso cref="T:IntranetCore.Data.ResourceParameters.EtiquetasResourceParameters"/></param>
+            <returns>ActionResult de EtiquetaModel</returns>
+        </member>
+        <member name="M:IntranetCore.Api.Controllers.TagCollectionController.GetTagCollection(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            List a set of tags specified by their names
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+            <reponse code="200">List of tags specified</reponse>
+            <reponse code="404">One of the tags does not exist</reponse>
+        </member>
         <member name="M:Intranet.API.Controllers.EntradaController.GetAll(IntranetCore.API.Data.EntradasResourceParameters)">
             <summary>
-            Obtiene todas las entradas teniendo en cuenta que las opciones de paginacion, ordenación y búsqueda de <paramref name="param"/> />
+            Obtiene todas las entradas teniendo en cuenta las opciones de paginacion, ordenación y búsqueda.
             </summary>
             <param name="param">Opciones para ordenar, buscar y paginar las entradas</param>
             <returns></returns>
+            <response code="200">Entradas/posts</response>
         </member>
         <member name="M:Intranet.API.Controllers.EntradaController.Get(System.Guid)">
             <summary>
@@ -30,7 +48,9 @@
             Modifica una entrada por su identificador
             </summary>
             <param name="entradaId">Identificador de la entrada</param>
-            <param name="model">nformación para modificar una entrada</param>
+            <param name="model">Información para modificar una entrada</param>
+            <response code="200">Entrada modificada</response>
+            <response code="404">No se encontró la entrada con ese identificador</response>
             <returns></returns>
         </member>
         <member name="M:Intranet.API.Controllers.EntradaController.Delete(System.Guid)">
@@ -39,6 +59,8 @@
             </summary>
             <param name="entradaId">identfiador de la entrada</param>
             <returns></returns>
+            <response code="204">Entrada eliminada</response>
+            <response code="404">No se encontró la entrada con ese identificador</response>
         </member>
         <member name="M:Intranet.API.Controllers.EntradaController.GetEtiqueta(System.Guid,System.String)">
             <summary>
@@ -46,15 +68,19 @@
             </summary>
             <param name="entradaId">Identificador de la entrada</param>
             <param name="tagNombre">Nombre de la etiqueta</param>
+            <response code="200">Entrada solicitada</response>
+            <response code="404">Entrada no encontrada o etiqueta no associada a entrada</response>
             <returns></returns>
         </member>
         <member name="M:Intranet.API.Controllers.EntradaController.AddEtiqueta(System.Guid,IntranetCore.Data.Models.EtiquetaForAssociationModel)">
             <summary>
-            Da de alta una associación entre una entrada y una etiqueta 
+            Da de alta una associación entre una entrada y una etiqueta si no existía ya previamente
             </summary>
             <param name="entradaId">Identificador de la entrada</param>
             <param name="model">Información para associar a una etiqueta</param>
             <returns></returns>
+            <response code="201">Se ha associado la etiqueta a la entrada si no lo estaba ya</response>
+            <response code="404">Entrada o etiquetas no encontradas</response>
         </member>
         <member name="M:Intranet.API.Controllers.EntradaController.DeleteEtiqueta(System.Guid,System.String)">
             <summary>
@@ -63,6 +89,52 @@
             <param name="entradaId">Id de la entrada</param>
             <param name="tagNombre">Nombre de la etiqueta</param>
             <returns></returns>
+            <response code="204">Eliminada associación de etiqueta y entrada si existía</response>
+            <response code="404">Entrada o etiquetas no encontradas</response>
+        </member>
+        <member name="M:Intranet.API.Controllers.EtiquetaController.GetAll(IntranetCore.Data.ResourceParameters.EtiquetasResourceParameters)">
+            <summary>
+            Obtiene las etiquetas teniendo en cuenta las opciones de paginación, ordenación y búsqueda.
+            </summary>
+            <param name="tagsParameters">Información de paginación ordenación y búsqueda. 
+            <seealso cref="T:IntranetCore.Data.ResourceParameters.EtiquetasResourceParameters"/></param>
+            <returns>ActionResult de EtiquetaModel</returns>
+        </member>
+        <member name="M:Intranet.API.Controllers.EtiquetaController.GetTag(System.String)">
+            <summary>
+            Obtiene una etiqueta por su nombre
+            </summary>
+            <param name="nombre">Nombre de la etiqueta. Se ignoran las mayúsculas.</param>
+            <returns></returns>
+            <response code="200">Devuelve la etiqueta</response>
+            <response code="404">No se encontró ninguna etiqueta con el nombre proporcionado</response>
+        </member>
+        <member name="M:Intranet.API.Controllers.EtiquetaController.Post(IntranetCore.Data.Models.EtiquetaModel)">
+            <summary>
+            Crea una nueva etiqueta
+            </summary>
+            <param name="model">Modelo para crear una etiqueta nueva</param>
+            <returns>ActionResult de EtiquetaModel</returns>
+            <response code="201">Nueva etiqueta</response>
+            <response code="400">La etiqueta ya existe</response>
+        </member>
+        <member name="M:Intranet.API.Controllers.EtiquetaController.Put(System.String,IntranetCore.Data.Models.EtiquetaForUpdateModel)">
+            <summary>
+            Modifica la etiqueta
+            </summary>
+            <param name="nombre">Nombre identificador de la etiqueta</param>
+            <param name="model">Información a actualizar de la etiqueta. Solo el HexColor</param>
+            <returns></returns>
+            <response code="404">No se encontró etiqueta con este nombre</response>
+            <response code="200">Etiqueta modificada</response>
+        </member>
+        <member name="M:Intranet.API.Controllers.EtiquetaController.Delete(System.String)">
+            <summary>
+            Elimina un etiqueta por nombre
+            </summary>
+            <param name="nombre">Nombre de le etiqueta a eliminar</param>
+            <returns>IActionResult</returns>
+            <reponse code="409">La etiqueta está en uso</reponse>
         </member>
         <member name="M:Intranet.API.Controllers.EtiquetaController.UpdatePartialEtiqueta(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{IntranetCore.Data.Models.EtiquetaForUpdateModel})">
             <summary>
@@ -81,6 +153,12 @@
                 } \
             ]
             </remarks>
+        </member>
+        <member name="M:Intranet.API.Controllers.EtiquetaController.GetEtiquetasOptions">
+            <summary>
+            Opciones disponibles en este recurso
+            </summary>
+            <returns></returns>
         </member>
     </members>
 </doc>
