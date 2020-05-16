@@ -46,16 +46,21 @@ namespace IntranetCore.Api
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddHttpCacheHeaders(options => {
+                options.MaxAge = 60;
+                options.CacheLocation = Marvin.Cache.Headers.CacheLocation.Public;
+            },
+            validationmodeloptions => {
+                validationmodeloptions.MustRevalidate = true;
+            });
 
             services.AddResponseCaching();
 
-            //services.AddMemoryCache();
-
             services.AddControllers(options => {
 
-                options.CacheProfiles.Add(new KeyValuePair<string, CacheProfile>(
-                                            "2minutoscacheprofile",
-                                            new CacheProfile { Duration = 120 }));
+                //options.CacheProfiles.Add(new KeyValuePair<string, CacheProfile>(
+                //                            "2minutoscacheprofile",
+                //                            new CacheProfile { Duration = 120 }));
 
                 options.ReturnHttpNotAcceptable = true;
                 
@@ -132,7 +137,7 @@ namespace IntranetCore.Api
 
             services.AddDbContext<IntranetCore.Data.IntranetDbContext>(options =>
             {
-                options.UseSqlServer(Configuration["IntranetDbConnectionString"]);
+                options.UseSqlServer(Configuration.GetConnectionString("IntranetDbConnectionString"));
             });
 
             services.AddScoped(typeof(IEtiquetaRepository), typeof(EtiquetaRepository));
@@ -267,7 +272,10 @@ namespace IntranetCore.Api
                     options.RoutePrefix = "";
                 });
 
+
             app.UseResponseCaching();
+
+            app.UseHttpCacheHeaders();
 
             app.UseRouting();
 

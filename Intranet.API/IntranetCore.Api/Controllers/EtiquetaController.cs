@@ -103,7 +103,8 @@ namespace Intranet.API.Controllers
         /// <returns></returns>
         /// <response code="200">Devuelve la etiqueta</response>
         /// <response code="404">No se encontró ninguna etiqueta con el nombre proporcionado</response>
-        [ResponseCache(Duration = 120)]
+        [Marvin.Cache.Headers.HttpCacheExpiration(MaxAge =100, CacheLocation = Marvin.Cache.Headers.CacheLocation.Public)]
+        [Marvin.Cache.Headers.HttpCacheValidation(MustRevalidate = false)]
         [ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status404NotFound)]
         [ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status200OK)]
         [HttpGet("{nombre}", Name = "GetTag")]
