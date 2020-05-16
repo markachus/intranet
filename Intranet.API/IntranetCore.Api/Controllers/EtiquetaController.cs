@@ -15,6 +15,8 @@ using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.JsonPatch;
 using IntranetCore.Api.Attributes;
+using Microsoft.Extensions.Caching.Redis;
+
 
 namespace Intranet.API.Controllers
 {
@@ -33,6 +35,8 @@ namespace Intranet.API.Controllers
             this.mapper = mapper;
         }
 
+        [Marvin.Cache.Headers.HttpCacheExpiration(MaxAge = 100, CacheLocation = Marvin.Cache.Headers.CacheLocation.Public)]
+        [Marvin.Cache.Headers.HttpCacheValidation(MustRevalidate = false)]
         /// <summary>
         /// Obtiene las etiquetas teniendo en cuenta las opciones de paginación, ordenación y búsqueda.
         /// </summary>
@@ -103,8 +107,6 @@ namespace Intranet.API.Controllers
         /// <returns></returns>
         /// <response code="200">Devuelve la etiqueta</response>
         /// <response code="404">No se encontró ninguna etiqueta con el nombre proporcionado</response>
-        [Marvin.Cache.Headers.HttpCacheExpiration(MaxAge =100, CacheLocation = Marvin.Cache.Headers.CacheLocation.Public)]
-        [Marvin.Cache.Headers.HttpCacheValidation(MustRevalidate = false)]
         [ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status404NotFound)]
         [ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status200OK)]
         [HttpGet("{nombre}", Name = "GetTag")]
