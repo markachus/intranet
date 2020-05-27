@@ -46,15 +46,15 @@ namespace IntranetCore.Api
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddHttpCacheHeaders(options => {
-                options.MaxAge = 60;
-                options.CacheLocation = Marvin.Cache.Headers.CacheLocation.Public;
-            },
-            validationmodeloptions => {
-                validationmodeloptions.MustRevalidate = true;
-            });
+            //services.AddHttpCacheHeaders(options => {
+            //    options.MaxAge = 60;
+            //    options.CacheLocation = Marvin.Cache.Headers.CacheLocation.Public;
+            //},
+            //validationmodeloptions => {
+            //    validationmodeloptions.MustRevalidate = true;
+            //});
 
-            services.AddResponseCaching();
+            //services.AddResponseCaching();
 
             services.AddControllers(options => {
 
@@ -273,9 +273,9 @@ namespace IntranetCore.Api
                 });
 
 
-            app.UseResponseCaching();
+            //app.UseResponseCaching();
 
-            app.UseHttpCacheHeaders();
+            //app.UseHttpCacheHeaders();
 
             app.UseRouting();
 

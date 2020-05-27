@@ -109,7 +109,7 @@
             <response code="200">Devuelve la etiqueta</response>
             <response code="404">No se encontró ninguna etiqueta con el nombre proporcionado</response>
         </member>
-        <member name="M:Intranet.API.Controllers.EtiquetaController.Post(IntranetCore.Data.Models.EtiquetaModel)">
+        <member name="M:Intranet.API.Controllers.EtiquetaController.Post(IntranetCore.Data.Models.EtiquetaForCreationModel)">
             <summary>
             Crea una nueva etiqueta
             </summary>

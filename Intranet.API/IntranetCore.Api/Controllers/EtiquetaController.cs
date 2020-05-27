@@ -107,6 +107,7 @@ namespace Intranet.API.Controllers
         [Marvin.Cache.Headers.HttpCacheValidation(MustRevalidate = false)]
         [ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status404NotFound)]
         [ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status200OK)]
+        [Produces("application/vnd.intranet.etiqueta.v1+json")]
         [HttpGet("{nombre}", Name = "GetTag")]
         public async Task<ActionResult<EtiquetaModel>> GetTag(string nombre)
         {
@@ -132,7 +133,7 @@ namespace Intranet.API.Controllers
             "application/json",
             "application/vnd.intranet.etiquetaforcreation.v1+json")]
         [HttpPost]
-        public async Task<ActionResult<EtiquetaForCreationModel>> Post(EtiquetaModel model)
+        public async Task<ActionResult<EtiquetaModel>> Post(EtiquetaForCreationModel model)
         {
             var tag = await _repository.GetAsync(model.Nombre);
             if (tag != null) return BadRequest($"La etiqueta {model.Nombre} ya existe");
@@ -148,7 +149,7 @@ namespace Intranet.API.Controllers
 
             await _repository.SaveChangesAsync();
             var newModel = mapper.Map<EtiquetaModel>(newTag);
-            return CreatedAtRoute("GetTag", new { nombre = model.Nombre }, newModel);
+            return CreatedAtRoute("GetTag", new { nombre = model.Nombre, version = "1" }, newModel);
 
         }
 
