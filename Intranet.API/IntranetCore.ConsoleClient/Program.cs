@@ -54,7 +54,10 @@ namespace IntranetCore.ConsoleClient
             // scoped lifetime
 
             // For the CRUD demos
-            serviceCollection.AddScoped<IIntegrationService, CRUDService>();  
+            //serviceCollection.AddScoped<IIntegrationService, CRUDService>();
+
+
+            serviceCollection.AddScoped<IIntegrationService, PartialUpdateService>();
         }
     }
 }
