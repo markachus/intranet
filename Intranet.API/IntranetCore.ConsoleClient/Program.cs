@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using Microsoft.Extensions.Logging.Debug;
 using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace IntranetCore.ConsoleClient
@@ -44,11 +45,31 @@ namespace IntranetCore.ConsoleClient
         private static void ConfigureServices(IServiceCollection serviceCollection)
         {
             // add loggers           
-            serviceCollection.AddSingleton(new LoggerFactory());
-                  //.AddConsole()
-                  //.AddDebug());
+            var loggerFactory = LoggerFactory.Create(configure => {
+                configure.AddConsole();
+                configure.AddDebug();
+            });
+            serviceCollection.AddSingleton(loggerFactory);
 
             serviceCollection.AddLogging();
+
+            serviceCollection.AddHttpClient<TagsClient>(client =>
+            {
+                client.BaseAddress = new Uri("http://localhost:51044/");
+                client.Timeout = new TimeSpan(0, 0, 30);
+                client.DefaultRequestHeaders.Clear();
+            });/*.ConfigurePrimaryHttpMessageHandler(configHandler =>
+                new HttpClientHandler()
+                {
+                    AutomaticDecompression = System.Net.DecompressionMethods.GZip
+                });*/
+
+            //serviceCollection.AddHttpClient<TagsClient>().
+            //    ConfigurePrimaryHttpMessageHandler(configHandler =>
+            //    new HttpClientHandler()
+            //    {
+            //        AutomaticDecompression = System.Net.DecompressionMethods.GZip
+            //    });
 
             // register the integration service on our container with a 
             // scoped lifetime
@@ -56,8 +77,12 @@ namespace IntranetCore.ConsoleClient
             // For the CRUD demos
             //serviceCollection.AddScoped<IIntegrationService, CRUDService>();
 
+            //serviceCollection.AddScoped<IIntegrationService, PartialUpdateService>();
 
-            serviceCollection.AddScoped<IIntegrationService, PartialUpdateService>();
+            //serviceCollection.AddScoped<IIntegrationService, HttpClientFactoryManagementService>();
+
+            serviceCollection.AddScoped<IIntegrationService, DealingWithErrorsAndFaultService>();
+
         }
     }
 }
