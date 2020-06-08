@@ -1,0 +1,38 @@
+﻿@page
+@model IntranetCore.WebClient.Pages.Tags.ListModel
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Etiquetas</h1>
+
+<form method="get">
+
+    <div class="form-group">
+        <div class="input-group">
+
+            <input type="search" class="form-control" value="" name="SearchQuery"/>
+            <button class="btn btn-primary">Submit</button>
+        </div>
+
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Nombre</td>
+            <td>Color</td>
+        </tr>
+    </thead>
+    @foreach (var tag in Model.Tags)
+    {
+        <tr>
+            <td>@tag.Nombre</td>
+            <td>@tag.HexColor</td>
+        </tr>
+
+    }
+
+</table>
+

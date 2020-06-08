@@ -1,0 +1,4654 @@
+{
+	"info": {
+		"_postman_id": "afac67c9-6c31-4711-a455-7183e954f2b8",
+		"name": "Documentación de la Intranet API",
+		"description": "Está documentación se pone a servicio de aquellos departamentos que desean consumir la API Intranet desde una Mobile App o desde un App Web\n\nContact Support:\n Name: Marc Esteve\n Email: markachus@gmail.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api/v{version}",
+			"item": [
+				{
+					"name": "posts",
+					"item": [
+						{
+							"name": "{entrada Id}",
+							"item": [
+								{
+									"name": "tags",
+									"item": [
+										{
+											"name": "{tag Nombre}",
+											"item": [
+												{
+													"name": "Obtiene una etiqueta asociada a una entrada",
+													"request": {
+														"auth": {
+															"type": "noauth"
+														},
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags/:tagNombre",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"posts",
+																":entradaId",
+																"tags",
+																":tagNombre"
+															],
+															"variable": [
+																{
+																	"key": "entradaId",
+																	"value": "<uuid>",
+																	"description": "(Required) Identificador de la entrada"
+																},
+																{
+																	"key": "tagNombre",
+																	"value": "<string>",
+																	"description": "(Required) Nombre de la etiqueta"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "Not Acceptable",
+															"originalRequest": {
+																"method": "GET",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags/:tagNombre",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v{{version}}",
+																		"posts",
+																		":entradaId",
+																		"tags",
+																		":tagNombre"
+																	],
+																	"variable": [
+																		{
+																			"key": "entradaId"
+																		},
+																		{
+																			"key": "tagNombre"
+																		}
+																	]
+																}
+															},
+															"status": "Not Acceptable",
+															"code": 406,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+														},
+														{
+															"name": "Unauthorized",
+															"originalRequest": {
+																"method": "GET",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags/:tagNombre",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v{{version}}",
+																		"posts",
+																		":entradaId",
+																		"tags",
+																		":tagNombre"
+																	],
+																	"variable": [
+																		{
+																			"key": "entradaId"
+																		},
+																		{
+																			"key": "tagNombre"
+																		}
+																	]
+																}
+															},
+															"status": "Unauthorized",
+															"code": 401,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+														},
+														{
+															"name": "Entrada solicitada",
+															"originalRequest": {
+																"method": "GET",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags/:tagNombre",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v{{version}}",
+																		"posts",
+																		":entradaId",
+																		"tags",
+																		":tagNombre"
+																	],
+																	"variable": [
+																		{
+																			"key": "entradaId"
+																		},
+																		{
+																			"key": "tagNombre"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n \"nombre\": \"<string>\",\n \"hexColor\": \"<string>\",\n \"fechaUltimaModificacion\": \"<dateTime>\"\n}"
+														},
+														{
+															"name": "Entrada no encontrada o etiqueta no associada a entrada",
+															"originalRequest": {
+																"method": "GET",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags/:tagNombre",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v{{version}}",
+																		"posts",
+																		":entradaId",
+																		"tags",
+																		":tagNombre"
+																	],
+																	"variable": [
+																		{
+																			"key": "entradaId"
+																		},
+																		{
+																			"key": "tagNombre"
+																		}
+																	]
+																}
+															},
+															"status": "Not Found",
+															"code": 404,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+														},
+														{
+															"name": "Bad Request",
+															"originalRequest": {
+																"method": "GET",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags/:tagNombre",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v{{version}}",
+																		"posts",
+																		":entradaId",
+																		"tags",
+																		":tagNombre"
+																	],
+																	"variable": [
+																		{
+																			"key": "entradaId"
+																		},
+																		{
+																			"key": "tagNombre"
+																		}
+																	]
+																}
+															},
+															"status": "Bad Request",
+															"code": 400,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+														},
+														{
+															"name": "Server Error",
+															"originalRequest": {
+																"method": "GET",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags/:tagNombre",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v{{version}}",
+																		"posts",
+																		":entradaId",
+																		"tags",
+																		":tagNombre"
+																	],
+																	"variable": [
+																		{
+																			"key": "entradaId"
+																		},
+																		{
+																			"key": "tagNombre"
+																		}
+																	]
+																}
+															},
+															"status": "Internal Server Error",
+															"code": 500,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "text/plain"
+																}
+															],
+															"cookie": [],
+															"body": ""
+														}
+													]
+												},
+												{
+													"name": "Elimina la associacón entre una entrada y una etiqueta",
+													"request": {
+														"auth": {
+															"type": "noauth"
+														},
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags/:tagNombre",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"posts",
+																":entradaId",
+																"tags",
+																":tagNombre"
+															],
+															"variable": [
+																{
+																	"key": "entradaId",
+																	"value": "<uuid>",
+																	"description": "(Required) Id de la entrada"
+																},
+																{
+																	"key": "tagNombre",
+																	"value": "<string>",
+																	"description": "(Required) Nombre de la etiqueta"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "Bad Request",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags/:tagNombre",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v{{version}}",
+																		"posts",
+																		":entradaId",
+																		"tags",
+																		":tagNombre"
+																	],
+																	"variable": [
+																		{
+																			"key": "entradaId"
+																		},
+																		{
+																			"key": "tagNombre"
+																		}
+																	]
+																}
+															},
+															"status": "Bad Request",
+															"code": 400,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+														},
+														{
+															"name": "Unauthorized",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags/:tagNombre",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v{{version}}",
+																		"posts",
+																		":entradaId",
+																		"tags",
+																		":tagNombre"
+																	],
+																	"variable": [
+																		{
+																			"key": "entradaId"
+																		},
+																		{
+																			"key": "tagNombre"
+																		}
+																	]
+																}
+															},
+															"status": "Unauthorized",
+															"code": 401,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+														},
+														{
+															"name": "Not Acceptable",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags/:tagNombre",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v{{version}}",
+																		"posts",
+																		":entradaId",
+																		"tags",
+																		":tagNombre"
+																	],
+																	"variable": [
+																		{
+																			"key": "entradaId"
+																		},
+																		{
+																			"key": "tagNombre"
+																		}
+																	]
+																}
+															},
+															"status": "Not Acceptable",
+															"code": 406,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+														},
+														{
+															"name": "Server Error",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags/:tagNombre",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v{{version}}",
+																		"posts",
+																		":entradaId",
+																		"tags",
+																		":tagNombre"
+																	],
+																	"variable": [
+																		{
+																			"key": "entradaId"
+																		},
+																		{
+																			"key": "tagNombre"
+																		}
+																	]
+																}
+															},
+															"status": "Internal Server Error",
+															"code": 500,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "text/plain"
+																}
+															],
+															"cookie": [],
+															"body": ""
+														},
+														{
+															"name": "Entrada o etiquetas no encontradas",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags/:tagNombre",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v{{version}}",
+																		"posts",
+																		":entradaId",
+																		"tags",
+																		":tagNombre"
+																	],
+																	"variable": [
+																		{
+																			"key": "entradaId"
+																		},
+																		{
+																			"key": "tagNombre"
+																		}
+																	]
+																}
+															},
+															"status": "Not Found",
+															"code": 404,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "text/plain"
+																}
+															],
+															"cookie": [],
+															"body": ""
+														},
+														{
+															"name": "Eliminada associación de etiqueta y entrada si existía",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags/:tagNombre",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v{{version}}",
+																		"posts",
+																		":entradaId",
+																		"tags",
+																		":tagNombre"
+																	],
+																	"variable": [
+																		{
+																			"key": "entradaId"
+																		},
+																		{
+																			"key": "tagNombre"
+																		}
+																	]
+																}
+															},
+															"status": "No Content",
+															"code": 204,
+															"_postman_previewlanguage": "text",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "text/plain"
+																}
+															],
+															"cookie": [],
+															"body": ""
+														}
+													]
+												}
+											],
+											"protocolProfileBehavior": {},
+											"_postman_isSubFolder": true
+										},
+										{
+											"name": "Da de alta una associación entre una entrada y una etiqueta si no existía ya previamente",
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"nombre\": \"<string>\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"posts",
+														":entradaId",
+														"tags"
+													],
+													"variable": [
+														{
+															"key": "entradaId",
+															"value": "<uuid>",
+															"description": "(Required) Identificador de la entrada"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"nombre\": \"<string>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"posts",
+																":entradaId",
+																"tags"
+															],
+															"variable": [
+																{
+																	"key": "entradaId"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Entrada o etiquetas no encontradas",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"nombre\": \"<string>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"posts",
+																":entradaId",
+																"tags"
+															],
+															"variable": [
+																{
+																	"key": "entradaId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Unauthorized",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"nombre\": \"<string>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"posts",
+																":entradaId",
+																"tags"
+															],
+															"variable": [
+																{
+																	"key": "entradaId"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Se ha associado la etiqueta a la entrada si no lo estaba ya",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"nombre\": \"<string>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"posts",
+																":entradaId",
+																"tags"
+															],
+															"variable": [
+																{
+																	"key": "entradaId"
+																}
+															]
+														}
+													},
+													"status": "Created",
+													"code": 201,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"nombre\": \"<string>\",\n \"hexColor\": \"<string>\",\n \"fechaUltimaModificacion\": \"<dateTime>\"\n}"
+												},
+												{
+													"name": "Client Error",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"nombre\": \"<string>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"posts",
+																":entradaId",
+																"tags"
+															],
+															"variable": [
+																{
+																	"key": "entradaId"
+																}
+															]
+														}
+													},
+													"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+													"code": 422,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "Server Error",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"nombre\": \"<string>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"posts",
+																":entradaId",
+																"tags"
+															],
+															"variable": [
+																{
+																	"key": "entradaId"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "text/plain"
+														}
+													],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Not Acceptable",
+													"originalRequest": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"nombre\": \"<string>\"\n}"
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId/tags",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v{{version}}",
+																"posts",
+																":entradaId",
+																"tags"
+															],
+															"variable": [
+																{
+																	"key": "entradaId"
+																}
+															]
+														}
+													},
+													"status": "Not Acceptable",
+													"code": 406,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+												}
+											]
+										}
+									],
+									"protocolProfileBehavior": {},
+									"_postman_isSubFolder": true
+								},
+								{
+									"name": "Obtiene una entrada por su Id",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"posts",
+												":entradaId"
+											],
+											"variable": [
+												{
+													"key": "entradaId",
+													"value": "<uuid>",
+													"description": "(Required) Id de la entrada"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"posts",
+														":entradaId"
+													],
+													"variable": [
+														{
+															"key": "entradaId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"posts",
+														":entradaId"
+													],
+													"variable": [
+														{
+															"key": "entradaId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"contenido\": \"<string>\",\n \"titulo\": \"<string>\",\n \"id\": \"<uuid>\",\n \"etiquetas\": [\n  {\n   \"nombre\": \"<string>\",\n   \"hexColor\": \"<string>\",\n   \"fechaUltimaModificacion\": \"<dateTime>\"\n  },\n  {\n   \"nombre\": \"<string>\",\n   \"hexColor\": \"<string>\",\n   \"fechaUltimaModificacion\": \"<dateTime>\"\n  }\n ]\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"posts",
+														":entradaId"
+													],
+													"variable": [
+														{
+															"key": "entradaId"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Server Error",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"posts",
+														":entradaId"
+													],
+													"variable": [
+														{
+															"key": "entradaId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Not Found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"posts",
+														":entradaId"
+													],
+													"variable": [
+														{
+															"key": "entradaId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Not Acceptable",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"posts",
+														":entradaId"
+													],
+													"variable": [
+														{
+															"key": "entradaId"
+														}
+													]
+												}
+											},
+											"status": "Not Acceptable",
+											"code": 406,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Modifica una entrada por su identificador",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"contenido\": \"<string>\",\n    \"titulo\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"etiquetas\": [\n        {\n            \"nombre\": \"<string>\",\n            \"hexColor\": \"<string>\",\n            \"fechaUltimaModificacion\": \"<dateTime>\"\n        },\n        {\n            \"nombre\": \"<string>\",\n            \"hexColor\": \"<string>\",\n            \"fechaUltimaModificacion\": \"<dateTime>\"\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"posts",
+												":entradaId"
+											],
+											"variable": [
+												{
+													"key": "entradaId",
+													"value": "<uuid>",
+													"description": "(Required) Identificador de la entrada"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "No se encontró la entrada con ese identificador",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"contenido\": \"<string>\",\n    \"titulo\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"etiquetas\": [\n        {\n            \"nombre\": \"<string>\",\n            \"hexColor\": \"<string>\",\n            \"fechaUltimaModificacion\": \"<dateTime>\"\n        },\n        {\n            \"nombre\": \"<string>\",\n            \"hexColor\": \"<string>\",\n            \"fechaUltimaModificacion\": \"<dateTime>\"\n        }\n    ]\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"posts",
+														":entradaId"
+													],
+													"variable": [
+														{
+															"key": "entradaId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Not Acceptable",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"contenido\": \"<string>\",\n    \"titulo\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"etiquetas\": [\n        {\n            \"nombre\": \"<string>\",\n            \"hexColor\": \"<string>\",\n            \"fechaUltimaModificacion\": \"<dateTime>\"\n        },\n        {\n            \"nombre\": \"<string>\",\n            \"hexColor\": \"<string>\",\n            \"fechaUltimaModificacion\": \"<dateTime>\"\n        }\n    ]\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"posts",
+														":entradaId"
+													],
+													"variable": [
+														{
+															"key": "entradaId"
+														}
+													]
+												}
+											},
+											"status": "Not Acceptable",
+											"code": 406,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"contenido\": \"<string>\",\n    \"titulo\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"etiquetas\": [\n        {\n            \"nombre\": \"<string>\",\n            \"hexColor\": \"<string>\",\n            \"fechaUltimaModificacion\": \"<dateTime>\"\n        },\n        {\n            \"nombre\": \"<string>\",\n            \"hexColor\": \"<string>\",\n            \"fechaUltimaModificacion\": \"<dateTime>\"\n        }\n    ]\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"posts",
+														":entradaId"
+													],
+													"variable": [
+														{
+															"key": "entradaId"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Client Error",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"contenido\": \"<string>\",\n    \"titulo\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"etiquetas\": [\n        {\n            \"nombre\": \"<string>\",\n            \"hexColor\": \"<string>\",\n            \"fechaUltimaModificacion\": \"<dateTime>\"\n        },\n        {\n            \"nombre\": \"<string>\",\n            \"hexColor\": \"<string>\",\n            \"fechaUltimaModificacion\": \"<dateTime>\"\n        }\n    ]\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"posts",
+														":entradaId"
+													],
+													"variable": [
+														{
+															"key": "entradaId"
+														}
+													]
+												}
+											},
+											"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+											"code": 422,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Entrada modificada",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"contenido\": \"<string>\",\n    \"titulo\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"etiquetas\": [\n        {\n            \"nombre\": \"<string>\",\n            \"hexColor\": \"<string>\",\n            \"fechaUltimaModificacion\": \"<dateTime>\"\n        },\n        {\n            \"nombre\": \"<string>\",\n            \"hexColor\": \"<string>\",\n            \"fechaUltimaModificacion\": \"<dateTime>\"\n        }\n    ]\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"posts",
+														":entradaId"
+													],
+													"variable": [
+														{
+															"key": "entradaId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"contenido\": \"<string>\",\n \"titulo\": \"<string>\",\n \"id\": \"<uuid>\",\n \"etiquetas\": [\n  {\n   \"nombre\": \"<string>\",\n   \"hexColor\": \"<string>\",\n   \"fechaUltimaModificacion\": \"<dateTime>\"\n  },\n  {\n   \"nombre\": \"<string>\",\n   \"hexColor\": \"<string>\",\n   \"fechaUltimaModificacion\": \"<dateTime>\"\n  }\n ]\n}"
+										},
+										{
+											"name": "Server Error",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"contenido\": \"<string>\",\n    \"titulo\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"etiquetas\": [\n        {\n            \"nombre\": \"<string>\",\n            \"hexColor\": \"<string>\",\n            \"fechaUltimaModificacion\": \"<dateTime>\"\n        },\n        {\n            \"nombre\": \"<string>\",\n            \"hexColor\": \"<string>\",\n            \"fechaUltimaModificacion\": \"<dateTime>\"\n        }\n    ]\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"posts",
+														":entradaId"
+													],
+													"variable": [
+														{
+															"key": "entradaId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"contenido\": \"<string>\",\n    \"titulo\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"etiquetas\": [\n        {\n            \"nombre\": \"<string>\",\n            \"hexColor\": \"<string>\",\n            \"fechaUltimaModificacion\": \"<dateTime>\"\n        },\n        {\n            \"nombre\": \"<string>\",\n            \"hexColor\": \"<string>\",\n            \"fechaUltimaModificacion\": \"<dateTime>\"\n        }\n    ]\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"posts",
+														":entradaId"
+													],
+													"variable": [
+														{
+															"key": "entradaId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Elimina una entrada y las associaciones con etiquetas que tuviese",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"posts",
+												":entradaId"
+											],
+											"variable": [
+												{
+													"key": "entradaId",
+													"value": "<uuid>",
+													"description": "(Required) identfiador de la entrada"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Server Error",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"posts",
+														":entradaId"
+													],
+													"variable": [
+														{
+															"key": "entradaId"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"posts",
+														":entradaId"
+													],
+													"variable": [
+														{
+															"key": "entradaId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "No se encontró la entrada con ese identificador",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"posts",
+														":entradaId"
+													],
+													"variable": [
+														{
+															"key": "entradaId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Entrada eliminada",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"posts",
+														":entradaId"
+													],
+													"variable": [
+														{
+															"key": "entradaId"
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Not Acceptable",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"posts",
+														":entradaId"
+													],
+													"variable": [
+														{
+															"key": "entradaId"
+														}
+													]
+												}
+											},
+											"status": "Not Acceptable",
+											"code": 406,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/posts/:entradaId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"posts",
+														":entradaId"
+													],
+													"variable": [
+														{
+															"key": "entradaId"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										}
+									]
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Obtiene todas las entradas teniendo en cuenta las opciones de paginacion, ordenación y búsqueda.",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v{{version}}/posts?PageSize=<integer>&PageNumber=<integer>&OrderBy=<string>&SearchQuery=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v{{version}}",
+										"posts"
+									],
+									"query": [
+										{
+											"key": "PageSize",
+											"value": "<integer>",
+											"description": "Tamaño de página. Máximo 20"
+										},
+										{
+											"key": "PageNumber",
+											"value": "<integer>",
+											"description": "Numero de página. Empieza en 1."
+										},
+										{
+											"key": "OrderBy",
+											"value": "<string>",
+											"description": "Campos de ordenación separados por coma"
+										},
+										{
+											"key": "SearchQuery",
+											"value": "<string>",
+											"description": "Texto que se buscara en el título y contenido de la entrada"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/posts?PageSize=<integer>&PageNumber=<integer>&OrderBy=<string>&SearchQuery=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"posts"
+											],
+											"query": [
+												{
+													"key": "PageSize",
+													"value": "<integer>"
+												},
+												{
+													"key": "PageNumber",
+													"value": "<integer>"
+												},
+												{
+													"key": "OrderBy",
+													"value": "<string>"
+												},
+												{
+													"key": "SearchQuery",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.intranet.entrada.v1+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								},
+								{
+									"name": "Server Error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/posts?PageSize=<integer>&PageNumber=<integer>&OrderBy=<string>&SearchQuery=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"posts"
+											],
+											"query": [
+												{
+													"key": "PageSize",
+													"value": "<integer>"
+												},
+												{
+													"key": "PageNumber",
+													"value": "<integer>"
+												},
+												{
+													"key": "OrderBy",
+													"value": "<string>"
+												},
+												{
+													"key": "SearchQuery",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Entradas/posts",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/posts?PageSize=<integer>&PageNumber=<integer>&OrderBy=<string>&SearchQuery=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"posts"
+											],
+											"query": [
+												{
+													"key": "PageSize",
+													"value": "<integer>"
+												},
+												{
+													"key": "PageNumber",
+													"value": "<integer>"
+												},
+												{
+													"key": "OrderBy",
+													"value": "<string>"
+												},
+												{
+													"key": "SearchQuery",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.intranet.entrada.v1+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"contenido\": \"<string>\",\n \"titulo\": \"<string>\",\n \"id\": \"<uuid>\",\n \"etiquetas\": [\n  {\n   \"nombre\": \"<string>\",\n   \"hexColor\": \"<string>\",\n   \"fechaUltimaModificacion\": \"<dateTime>\"\n  },\n  {\n   \"nombre\": \"<string>\",\n   \"hexColor\": \"<string>\",\n   \"fechaUltimaModificacion\": \"<dateTime>\"\n  }\n ]\n}"
+								},
+								{
+									"name": "Not Acceptable",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/posts?PageSize=<integer>&PageNumber=<integer>&OrderBy=<string>&SearchQuery=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"posts"
+											],
+											"query": [
+												{
+													"key": "PageSize",
+													"value": "<integer>"
+												},
+												{
+													"key": "PageNumber",
+													"value": "<integer>"
+												},
+												{
+													"key": "OrderBy",
+													"value": "<string>"
+												},
+												{
+													"key": "SearchQuery",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Not Acceptable",
+									"code": 406,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.intranet.entrada.v1+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/posts?PageSize=<integer>&PageNumber=<integer>&OrderBy=<string>&SearchQuery=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"posts"
+											],
+											"query": [
+												{
+													"key": "PageSize",
+													"value": "<integer>"
+												},
+												{
+													"key": "PageNumber",
+													"value": "<integer>"
+												},
+												{
+													"key": "OrderBy",
+													"value": "<string>"
+												},
+												{
+													"key": "SearchQuery",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.intranet.entrada.v1+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Crea una nueva entrada y asocia las etiquetas con ésta",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"contenido\": \"<string>\",\n    \"titulo\": \"<string>\",\n    \"etiquetas\": [\n        \"<string>\",\n        \"<string>\"\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v{{version}}/posts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v{{version}}",
+										"posts"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"contenido\": \"<string>\",\n    \"titulo\": \"<string>\",\n    \"etiquetas\": [\n        \"<string>\",\n        \"<string>\"\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/posts",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"posts"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"contenido\": \"<string>\",\n    \"titulo\": \"<string>\",\n    \"etiquetas\": [\n        \"<string>\",\n        \"<string>\"\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/posts",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"posts"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								},
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"contenido\": \"<string>\",\n    \"titulo\": \"<string>\",\n    \"etiquetas\": [\n        \"<string>\",\n        \"<string>\"\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/posts",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"posts"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Server Error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"contenido\": \"<string>\",\n    \"titulo\": \"<string>\",\n    \"etiquetas\": [\n        \"<string>\",\n        \"<string>\"\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/posts",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"posts"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Not Acceptable",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"contenido\": \"<string>\",\n    \"titulo\": \"<string>\",\n    \"etiquetas\": [\n        \"<string>\",\n        \"<string>\"\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/posts",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"posts"
+											]
+										}
+									},
+									"status": "Not Acceptable",
+									"code": 406,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								},
+								{
+									"name": "Client Error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"contenido\": \"<string>\",\n    \"titulo\": \"<string>\",\n    \"etiquetas\": [\n        \"<string>\",\n        \"<string>\"\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/posts",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"posts"
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "tags",
+					"item": [
+						{
+							"name": "{nombre}",
+							"item": [
+								{
+									"name": "Obtiene una etiqueta por su nombre",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags",
+												":nombre"
+											],
+											"variable": [
+												{
+													"key": "nombre",
+													"value": "<string>",
+													"description": "(Required) Nombre de la etiqueta. Se ignoran las mayúsculas."
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Devuelve la etiqueta",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"nombre\": \"<string>\",\n \"hexColor\": \"<string>\",\n \"fechaUltimaModificacion\": \"<dateTime>\"\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Server Error",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Not Acceptable",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "Not Acceptable",
+											"code": 406,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "No se encontró ninguna etiqueta con el nombre proporcionado",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Modifica la etiqueta",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags",
+												":nombre"
+											],
+											"variable": [
+												{
+													"key": "nombre",
+													"value": "<string>",
+													"description": "(Required) Nombre identificador de la etiqueta"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Server Error",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"hexColor\": \"<string>\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Etiqueta modificada",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"hexColor\": \"<string>\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"nombre\": \"<string>\",\n \"hexColor\": \"<string>\",\n \"fechaUltimaModificacion\": \"<dateTime>\"\n}"
+										},
+										{
+											"name": "Not Acceptable",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"hexColor\": \"<string>\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "Not Acceptable",
+											"code": 406,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"hexColor\": \"<string>\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "No se encontró etiqueta con este nombre",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"hexColor\": \"<string>\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"hexColor\": \"<string>\"\n}"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Elimina un etiqueta por nombre",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags",
+												":nombre"
+											],
+											"variable": [
+												{
+													"key": "nombre",
+													"value": "<string>",
+													"description": "(Required) Nombre de le etiqueta a eliminar"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Conflict",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "Conflict",
+											"code": 409,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Server Error",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Not Acceptable",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "Not Acceptable",
+											"code": 406,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Actualiza parcialmente una etiqueta",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n    {\n        \"value\": \"<object>\",\n        \"operationType\": \"<integer>\",\n        \"path\": \"<string>\",\n        \"op\": \"<string>\",\n        \"from\": \"<string>\"\n    },\n    {\n        \"value\": \"<object>\",\n        \"operationType\": \"<integer>\",\n        \"path\": \"<string>\",\n        \"op\": \"<string>\",\n        \"from\": \"<string>\"\n    }\n]"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags",
+												":nombre"
+											],
+											"variable": [
+												{
+													"key": "nombre",
+													"value": "<string>",
+													"description": "(Required) Nombre de la etiqueta"
+												}
+											]
+										},
+										"description": "Ejemplo: esto actualiza el color de la etiqueta \\\r\n            PATCH /tags/nombre \\\r\n            [ \\\r\n                {\\\r\n                    \"op\": \"replace\", \\\r\n                    \"from\": \"/HexColor\", \\\r\n                    \"value\": \"#000000\" \\\r\n                } \\\r\n            ]"
+									},
+									"response": [
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "[\n    {\n        \"value\": \"<object>\",\n        \"operationType\": \"<integer>\",\n        \"path\": \"<string>\",\n        \"op\": \"<string>\",\n        \"from\": \"<string>\"\n    },\n    {\n        \"value\": \"<object>\",\n        \"operationType\": \"<integer>\",\n        \"path\": \"<string>\",\n        \"op\": \"<string>\",\n        \"from\": \"<string>\"\n    }\n]"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Not Found",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "[\n    {\n        \"value\": \"<object>\",\n        \"operationType\": \"<integer>\",\n        \"path\": \"<string>\",\n        \"op\": \"<string>\",\n        \"from\": \"<string>\"\n    },\n    {\n        \"value\": \"<object>\",\n        \"operationType\": \"<integer>\",\n        \"path\": \"<string>\",\n        \"op\": \"<string>\",\n        \"from\": \"<string>\"\n    }\n]"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "[\n    {\n        \"value\": \"<object>\",\n        \"operationType\": \"<integer>\",\n        \"path\": \"<string>\",\n        \"op\": \"<string>\",\n        \"from\": \"<string>\"\n    },\n    {\n        \"value\": \"<object>\",\n        \"operationType\": \"<integer>\",\n        \"path\": \"<string>\",\n        \"op\": \"<string>\",\n        \"from\": \"<string>\"\n    }\n]"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "[\n    {\n        \"value\": \"<object>\",\n        \"operationType\": \"<integer>\",\n        \"path\": \"<string>\",\n        \"op\": \"<string>\",\n        \"from\": \"<string>\"\n    },\n    {\n        \"value\": \"<object>\",\n        \"operationType\": \"<integer>\",\n        \"path\": \"<string>\",\n        \"op\": \"<string>\",\n        \"from\": \"<string>\"\n    }\n]"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Not Acceptable",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "[\n    {\n        \"value\": \"<object>\",\n        \"operationType\": \"<integer>\",\n        \"path\": \"<string>\",\n        \"op\": \"<string>\",\n        \"from\": \"<string>\"\n    },\n    {\n        \"value\": \"<object>\",\n        \"operationType\": \"<integer>\",\n        \"path\": \"<string>\",\n        \"op\": \"<string>\",\n        \"from\": \"<string>\"\n    }\n]"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "Not Acceptable",
+											"code": 406,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Server Error",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "[\n    {\n        \"value\": \"<object>\",\n        \"operationType\": \"<integer>\",\n        \"path\": \"<string>\",\n        \"op\": \"<string>\",\n        \"from\": \"<string>\"\n    },\n    {\n        \"value\": \"<object>\",\n        \"operationType\": \"<integer>\",\n        \"path\": \"<string>\",\n        \"op\": \"<string>\",\n        \"from\": \"<string>\"\n    }\n]"
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/tags/:nombre",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"tags",
+														":nombre"
+													],
+													"variable": [
+														{
+															"key": "nombre"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Obtiene las etiquetas teniendo en cuenta las opciones de paginación, ordenación y búsqueda.",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v{{version}}/tags?PageSize=<integer>&PageNumber=<integer>&SearchQuery=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v{{version}}",
+										"tags"
+									],
+									"query": [
+										{
+											"key": "PageSize",
+											"value": "<integer>"
+										},
+										{
+											"key": "PageNumber",
+											"value": "<integer>"
+										},
+										{
+											"key": "SearchQuery",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags?PageSize=<integer>&PageNumber=<integer>&SearchQuery=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											],
+											"query": [
+												{
+													"key": "PageSize",
+													"value": "<integer>"
+												},
+												{
+													"key": "PageNumber",
+													"value": "<integer>"
+												},
+												{
+													"key": "SearchQuery",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								},
+								{
+									"name": "Not Acceptable",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags?PageSize=<integer>&PageNumber=<integer>&SearchQuery=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											],
+											"query": [
+												{
+													"key": "PageSize",
+													"value": "<integer>"
+												},
+												{
+													"key": "PageNumber",
+													"value": "<integer>"
+												},
+												{
+													"key": "SearchQuery",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Not Acceptable",
+									"code": 406,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								},
+								{
+									"name": "Server Error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags?PageSize=<integer>&PageNumber=<integer>&SearchQuery=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											],
+											"query": [
+												{
+													"key": "PageSize",
+													"value": "<integer>"
+												},
+												{
+													"key": "PageNumber",
+													"value": "<integer>"
+												},
+												{
+													"key": "SearchQuery",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags?PageSize=<integer>&PageNumber=<integer>&SearchQuery=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											],
+											"query": [
+												{
+													"key": "PageSize",
+													"value": "<integer>"
+												},
+												{
+													"key": "PageNumber",
+													"value": "<integer>"
+												},
+												{
+													"key": "SearchQuery",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"nombre\": \"<string>\",\n \"hexColor\": \"<string>\",\n \"fechaUltimaModificacion\": \"<dateTime>\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags?PageSize=<integer>&PageNumber=<integer>&SearchQuery=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											],
+											"query": [
+												{
+													"key": "PageSize",
+													"value": "<integer>"
+												},
+												{
+													"key": "PageNumber",
+													"value": "<integer>"
+												},
+												{
+													"key": "SearchQuery",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Crea una nueva etiqueta",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "04688f58-d405-4fcb-a062-3b08b8af0251",
+										"exec": [
+											"//Ensures the tag we are aboout to create doesen't exist\r",
+											"\r",
+											"const deleteRequest = {\r",
+											"    url : pm.environment.get(\"baseUrl\") + \"/api/v\" + pm.environment.get(\"version\") + \"/tags/nueva_etiqueta\",\r",
+											"    method: \"DELETE\"\r",
+											"}\r",
+											"\r",
+											"pm.sendRequest(deleteRequest, function (err, response) {\r",
+											"    console.log(err ? err: response.text());\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "4b1146d1-bf86-4182-9e05-aae66be68245",
+										"exec": [
+											"pm.test(\"Status code is 201 Created\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type is application/vnd.intranet.etiqueta.v1+json; charset=utf-8\", function(){\r",
+											"pm.expect(pm.response.headers.get(\"Content-Type\")).to.equal(\"application/vnd.intranet.etiqueta.v1+json; charset=utf-8\")\r",
+											"});\r",
+											"\r",
+											"var location = \r",
+											"pm.environment.get(\"baseUrl\") + \"/api/v\" +\r",
+											"pm.environment.get(\"version\") + \"/tags/\" +\r",
+											"pm.response.json().nombre;\r",
+											"\r",
+											"pm.test(\"Right url location generated for new tag\", function(){\r",
+											"\r",
+											"    pm.expect(pm.response.headers.get(\"Location\")).to.equal(location);\r",
+											"});\r",
+											"\r",
+											"const getTagRequest = {\r",
+											"    url: location,\r",
+											"    method: \"GET\",\r",
+											"    headers: \"Accept:application/vnd.intranet.etiqueta.v1+json\"\r",
+											"}\r",
+											"pm.sendRequest(getTagRequest, function (err, response) {\r",
+											"    console.log(err ? err : response.text());\r",
+											"     \r",
+											"\r",
+											"\r",
+											"    pm.test(\"Etiqueta creada con valores especificados\", function(){\r",
+											"\r",
+											"             pm.expect(response).to.have.property('code', 200);\r",
+											"         pm.expect(response).to.have.jsonBody();\r",
+											"        pm.expect(response.json().nombre).to.equal(\"nueva_etiqueta\");\r",
+											"\r",
+											"        pm.expect(response.json().hexColor).to.equal(\"#ff0011\");\r",
+											"\r",
+											"    });\r",
+											"     \r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nombre\": \"nueva_etiqueta\",\n    \"hexColor\": \"#ff0011\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v{{version}}/tags",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v{{version}}",
+										"tags"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Nueva etiqueta",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"<string>\",\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.intranet.etiqueta.v1+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"nombre\": \"<string>\",\n \"hexColor\": \"<string>\",\n \"fechaUltimaModificacion\": \"<dateTime>\"\n}"
+								},
+								{
+									"name": "Not Acceptable",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"<string>\",\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Not Acceptable",
+									"code": 406,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.intranet.etiqueta.v1+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								},
+								{
+									"name": "Server Error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"<string>\",\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"<string>\",\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.intranet.etiqueta.v1+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								},
+								{
+									"name": "La etiqueta ya existe",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"<string>\",\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.intranet.etiqueta.v1+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Crea una etiqueta ya existente",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a4912921-2b98-4d80-a237-b2db9e6d7b04",
+										"exec": [
+											"//Ensures the tag we are aboout to create do exist\r",
+											"\r",
+											"const ensureExistsRequest = {\r",
+											"    url: pm.environment.get(\"baseUrl\") + \"/api/v\" + pm.environment.get(\"version\") + \"/tags\",\r",
+											"    method: \"POST\",\r",
+											"    header: \"Content-Type=application/vnd.intranet.etiquetaforcreation.v1+json\",\r",
+											"    body: {\r",
+											"        nombre: \"nueva_etiqueta\"\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"pm.sendRequest(ensureExistsRequest, function (err, response) {\r",
+											"    console.log(err ? err : response.text());\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "89be3dbc-d68f-4936-9db1-45dd4df5e8a0",
+										"exec": [
+											"pm.test(\"Eiqueta duplicada -> Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nombre\": \"nueva_etiqueta\",\n    \"hexColor\": \"#ff0011\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v{{version}}/tags",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v{{version}}",
+										"tags"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Nueva etiqueta",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"<string>\",\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.intranet.etiqueta.v1+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"nombre\": \"<string>\",\n \"hexColor\": \"<string>\",\n \"fechaUltimaModificacion\": \"<dateTime>\"\n}"
+								},
+								{
+									"name": "Server Error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"<string>\",\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "La etiqueta ya existe",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"<string>\",\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.intranet.etiqueta.v1+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"<string>\",\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.intranet.etiqueta.v1+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								},
+								{
+									"name": "Not Acceptable",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"<string>\",\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Not Acceptable",
+									"code": 406,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.intranet.etiqueta.v1+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Crea una etiqueta wrong Content-Type",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "3a96f915-a2c8-4ce2-9274-203add26e499",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "04693236-e25f-499d-91e0-27e3f53560ab",
+										"exec": [
+											"pm.test(\"Content-Type erroneo devuelve Unsupported Media Type (415)\", function () {\r",
+											"    pm.response.to.have.status(415);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nombre\": \"etiqueta_sin_content_type\",\n    \"hexColor\": \"#ff0011\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v{{version}}/tags",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v{{version}}",
+										"tags"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Nueva etiqueta",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"<string>\",\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.intranet.etiqueta.v1+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"nombre\": \"<string>\",\n \"hexColor\": \"<string>\",\n \"fechaUltimaModificacion\": \"<dateTime>\"\n}"
+								},
+								{
+									"name": "Server Error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"<string>\",\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"<string>\",\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.intranet.etiqueta.v1+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								},
+								{
+									"name": "La etiqueta ya existe",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"<string>\",\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.intranet.etiqueta.v1+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								},
+								{
+									"name": "Not Acceptable",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"<string>\",\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Not Acceptable",
+									"code": 406,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.intranet.etiqueta.v1+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Crea una etiqueta with invalid data",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "6b330351-1448-4c37-ba83-0ce42735392e",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "b1f5507e-d91f-4204-9374-3dcce3949db5",
+										"exec": [
+											"pm.test(\"Content-Type erroneo devuelve Unsupported Media Type (415)\", function () {\r",
+											"    pm.response.to.have.status(415);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nombre\": \"etiqueta_sin_content_type\",\n    \"hexColor\": \"#ff0011\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v{{version}}/tags",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v{{version}}",
+										"tags"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Nueva etiqueta",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"<string>\",\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.intranet.etiqueta.v1+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"nombre\": \"<string>\",\n \"hexColor\": \"<string>\",\n \"fechaUltimaModificacion\": \"<dateTime>\"\n}"
+								},
+								{
+									"name": "La etiqueta ya existe",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"<string>\",\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.intranet.etiqueta.v1+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								},
+								{
+									"name": "Server Error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"<string>\",\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"<string>\",\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.intranet.etiqueta.v1+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								},
+								{
+									"name": "Not Acceptable",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nombre\": \"<string>\",\n    \"hexColor\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Not Acceptable",
+									"code": 406,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/vnd.intranet.etiqueta.v1+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Opciones disponibles en este recurso",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "OPTIONS",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v{{version}}/tags",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v{{version}}",
+										"tags"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Not Acceptable",
+									"originalRequest": {
+										"method": "OPTIONS",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Not Acceptable",
+									"code": 406,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								},
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "OPTIONS",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "OPTIONS",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "OPTIONS",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"type\": \"<string>\",\n \"title\": \"<string>\",\n \"status\": \"<integer>\",\n \"detail\": \"<string>\",\n \"instance\": \"<string>\"\n}"
+								},
+								{
+									"name": "Server Error",
+									"originalRequest": {
+										"method": "OPTIONS",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/tags",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"tags"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"variable": [
+		{
+			"id": "baseUrl",
+			"key": "baseUrl",
+			"value": "/",
+			"type": "string"
+		},
+		{
+			"id": "version",
+			"key": "version",
+			"value": "",
+			"type": "any",
+			"description": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
