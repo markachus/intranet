@@ -15,7 +15,11 @@ namespace IntranetCore.WebClient.Pages.Tags
     {
         private readonly TagsClient _client;
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
+
         public IEnumerable<EtiquetaModel> Tags { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public EtiquetasResourceParameters TagParams {get; set;}
 
 
         public ListModel(TagsClient client)
@@ -25,9 +29,11 @@ namespace IntranetCore.WebClient.Pages.Tags
 
         public IEnumerable<EtiquetaModel> Etiquetas { get; set; }
 
-        public void OnGet([FromQuery]EtiquetasResourceParameters etiquetaParameters)
+        public void OnGet()
         {
-            Tags = _client.GetTags(etiquetaParameters, _cancellationTokenSource.Token).Result;
+
+
+            Tags = _client.GetTags(TagParams, _cancellationTokenSource.Token).Result;
         }
     }
 }

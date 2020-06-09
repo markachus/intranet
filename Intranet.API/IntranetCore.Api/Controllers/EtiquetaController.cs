@@ -201,7 +201,7 @@ namespace Intranet.API.Controllers
             }
             catch (InvalidOperationException ex)
             {
-                return Conflict();
+                return Conflict(ex.Message);
             }
 
         }

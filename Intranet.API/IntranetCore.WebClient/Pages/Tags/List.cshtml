@@ -11,28 +11,42 @@
     <div class="form-group">
         <div class="input-group">
 
-            <input type="search" class="form-control" value="" name="SearchQuery"/>
-            <button class="btn btn-primary">Submit</button>
+            <input type="search" class="form-control" asp-for="TagParams.SearchQuery" />
+            <div class="input-group-append">
+                <button class="btn btn-primary">Submit</button>
+            </div>
         </div>
 
     </div>
 </form>
 
-<table class="table">
+<table class="table table-hover table-responsive-md">
     <thead>
         <tr>
-            <td>Nombre</td>
-            <td>Color</td>
+            <td>Name</td>
+            <td>Colour</td>
+            <td></td>
         </tr>
     </thead>
-    @foreach (var tag in Model.Tags)
-    {
+    <tbody>
+        @foreach (var tag in Model.Tags)
+        {
         <tr>
             <td>@tag.Nombre</td>
             <td>@tag.HexColor</td>
+            <td>
+                <a asp-page="./Detail" asp-route-tagName="@tag.Nombre">Details</a>
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-tagName="@tag.Nombre">Edit</a>
+            </td>
+            <td>
+                <a asp-page="./Delete" asp-route-tagName="@tag.Nombre">Delete</a>
+            </td>
         </tr>
 
-    }
-
+        }
+    </tbody>
 </table>
 
+<a asp-page="./Create" class="btn btn-primary">Create new</a>

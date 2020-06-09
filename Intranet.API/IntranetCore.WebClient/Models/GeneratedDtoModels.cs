@@ -12,6 +12,7 @@
 
 namespace IntranetCore.WebClient.Models
 {
+    using IntranetCore.Api.ValidationAttributes;
     using System = global::System;
     
    
@@ -22,7 +23,8 @@ namespace IntranetCore.WebClient.Models
         /// <summary>Nombre de la etiqueta</summary>
         [Newtonsoft.Json.JsonProperty("nombre", Required = Newtonsoft.Json.Required.Always)]
         public string Nombre { get; set; }
-    
+
+        [MustBeHexColor]
         /// <summary>Color de la etiqueta en hexadecimal. Ej: #FF4499</summary>
         [Newtonsoft.Json.JsonProperty("hexColor", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string HexColor { get; set; }
@@ -94,7 +96,8 @@ namespace IntranetCore.WebClient.Models
         /// <summary>Nombre de la etiqueta. Debe ser único</summary>
         [Newtonsoft.Json.JsonProperty("nombre", Required = Newtonsoft.Json.Required.Always)]
         public string Nombre { get; set; }
-    
+
+        [MustBeHexColor]
         /// <summary>Color de la etiqueta en hexadecimal. Ej: #FF4499</summary>
         [Newtonsoft.Json.JsonProperty("hexColor", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string HexColor { get; set; }

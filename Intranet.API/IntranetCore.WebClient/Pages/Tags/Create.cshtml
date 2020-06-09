@@ -1,0 +1,22 @@
+﻿@page
+@model IntranetCore.WebClient.Pages.Tags.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create new</h1>
+
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Tag.Nombre"></label>
+        <input asp-for="Tag.Nombre" class="form-control" />
+        <span class="text-danger" asp-validation-for="Tag.Nombre"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Tag.HexColor"></label>
+        <input asp-for="Tag.HexColor" class="form-control" />
+        <span class="text-danger" asp-validation-for="Tag.HexColor"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
