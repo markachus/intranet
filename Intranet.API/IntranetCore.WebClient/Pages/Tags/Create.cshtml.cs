@@ -21,12 +21,12 @@ namespace IntranetCore.WebClient.Pages.Tags
         {
             this._client = client;
         }
-        [BindProperty(SupportsGet =true)]
+        [BindProperty()]
         public EtiquetaForCreationModel Tag { get; set; }
 
         public void OnGet()
         {
-
+            //Tag = new EtiquetaForCreationModel();
         }
 
         public async Task<IActionResult> OnPost()

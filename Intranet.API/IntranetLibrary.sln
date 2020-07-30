@@ -24,7 +24,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntranetCore.ConsoleClient"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntranetCore.Test", "IntranetCore.Test\IntranetCore.Test.csproj", "{49040674-634B-4166-8F37-2938B7083764}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntranetCore.WebClient", "IntranetCore.WebClient\IntranetCore.WebClient.csproj", "{169B90EF-BC6C-42A9-90D7-C41B7CD194DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntranetCore.WebClient", "IntranetCore.WebClient\IntranetCore.WebClient.csproj", "{169B90EF-BC6C-42A9-90D7-C41B7CD194DE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntranetCore.IDP", "IntranetCore.IDP\IntranetCore.IDP.csproj", "{6A1ACABC-60CC-471D-BF7D-9D3284A09F11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +72,10 @@ Global
 		{169B90EF-BC6C-42A9-90D7-C41B7CD194DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{169B90EF-BC6C-42A9-90D7-C41B7CD194DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{169B90EF-BC6C-42A9-90D7-C41B7CD194DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A1ACABC-60CC-471D-BF7D-9D3284A09F11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A1ACABC-60CC-471D-BF7D-9D3284A09F11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A1ACABC-60CC-471D-BF7D-9D3284A09F11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A1ACABC-60CC-471D-BF7D-9D3284A09F11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

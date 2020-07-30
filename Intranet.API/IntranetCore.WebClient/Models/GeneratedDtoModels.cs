@@ -13,6 +13,7 @@
 namespace IntranetCore.WebClient.Models
 {
     using IntranetCore.Api.ValidationAttributes;
+    using System.ComponentModel.DataAnnotations;
     using System = global::System;
     
    
@@ -92,7 +93,8 @@ namespace IntranetCore.WebClient.Models
     /// <summary>Modelo para crear una nueva etiqueta</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.15.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class EtiquetaForCreationModel 
-    {
+    {   
+        [Required]
         /// <summary>Nombre de la etiqueta. Debe ser único</summary>
         [Newtonsoft.Json.JsonProperty("nombre", Required = Newtonsoft.Json.Required.Always)]
         public string Nombre { get; set; }
