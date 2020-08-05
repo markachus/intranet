@@ -7,11 +7,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using IntranetCore.WebClient.Clients;
 using IntranetCore.WebClient.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace IntranetCore.WebClient.Pages.Tags
 {
+    [Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
         private readonly TagsClient _client;

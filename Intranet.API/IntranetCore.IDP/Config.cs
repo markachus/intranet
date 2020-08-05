@@ -15,7 +15,12 @@ namespace IntranetCore.IDP
             new IdentityResource[]
             { 
                 new IdentityResources.OpenId(),
-                new IdentityResources.Profile()
+                new IdentityResources.Profile(),
+                new IdentityResources.Address(),
+                new IdentityResource(
+                    "roles", 
+                    "Your role(s)",
+                    new List<string>() { "role"})
             };
 
         public static IEnumerable<ApiScope> ApiScopes =>
@@ -28,11 +33,17 @@ namespace IntranetCore.IDP
                 new Client {  
                     ClientName = "Intranet Web",
                     ClientId = "intranetwebapp",
-                    AllowedGrantTypes = new List<string> () {GrantType.AuthorizationCode },
-                    RedirectUris = new List<string>() { "https://localhost:61920/signin-oidc" },
+                    AllowedGrantTypes = new List<string> () {GrantType.AuthorizationCode},
+                    RequirePkce = true,
+                    RedirectUris = new List<string>() { "https://localhost:44361/signin-oidc" },
+                    PostLogoutRedirectUris = new List<string>() {
+                      "https://localhost:44361/signout-callback-oidc"
+                    },
                     AllowedScopes = { 
                         IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Address,
+                        "roles"
                     },
                     ClientSecrets = { 
                         new Secret("secret".Sha256())

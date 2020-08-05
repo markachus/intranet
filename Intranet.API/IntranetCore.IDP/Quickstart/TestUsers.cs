@@ -30,24 +30,22 @@ namespace IdentityServerHost.Quickstart.UI
                     new TestUser
                     {
                         SubjectId = "818727",
-                        Username = "alice",
-                        Password = "alice",
+                        Username = "markachus",
+                        Password = "password",
                         Claims =
                         {
-                            new Claim(JwtClaimTypes.Name, "Alice Smith"),
-                            new Claim(JwtClaimTypes.GivenName, "Alice"),
-                            new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                            new Claim(JwtClaimTypes.Email, "AliceSmith@email.com"),
-                            new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                            new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
-                            new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json)
+                            new Claim(JwtClaimTypes.Name, "Marc Esteve"),
+                            new Claim(JwtClaimTypes.GivenName, "Marc"),
+                            new Claim(JwtClaimTypes.FamilyName, "Esteve"),
+                            new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json),
+                            new Claim("role", "Admin")
                         }
                     },
                     new TestUser
                     {
                         SubjectId = "88421113",
                         Username = "bob",
-                        Password = "bob",
+                        Password = "password",
                         Claims =
                         {
                             new Claim(JwtClaimTypes.Name, "Bob Smith"),
@@ -56,7 +54,8 @@ namespace IdentityServerHost.Quickstart.UI
                             new Claim(JwtClaimTypes.Email, "BobSmith@email.com"),
                             new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
                             new Claim(JwtClaimTypes.WebSite, "http://bob.com"),
-                            new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json)
+                            new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json),
+                            new Claim("role", "normal")
                         }
                     }
                 };

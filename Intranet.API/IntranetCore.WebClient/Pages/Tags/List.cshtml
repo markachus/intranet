@@ -40,9 +40,13 @@
             <td>
                 <a asp-page="./Edit" asp-route-tagName="@tag.Nombre">Edit</a>
             </td>
-            <td>
-                <a asp-page="./Delete" asp-route-tagName="@tag.Nombre">Delete</a>
-            </td>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    <a asp-page="./Delete" asp-route-tagName="@tag.Nombre">Delete</a>
+                </td>
+            }
         </tr>
 
         }
